@@ -1,4 +1,3 @@
-using System;
 using PurrNet;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,24 +9,29 @@ public class PlayerScript : NetworkBehaviour
 
     [SerializeField]
     private float _moveSpeed;
-    
+
     [SerializeField]
     private Transform _targetTransform;
 
     private Vector2 _moveDirection;
-    
-    void OnEnable()
+
+    private void OnEnable()
     {
         _moveAction.Enable();
         _moveAction.performed += OnMovePerformed;
         _moveAction.canceled += OnMovePerformed;
     }
-    
-    void OnDisable()
+
+    private void OnDisable()
     {
         _moveAction.performed -= OnMovePerformed;
         _moveAction.canceled -= OnMovePerformed;
         _moveAction.Disable();
+    }
+
+    protected override void OnOwnerDisconnected(PlayerID ownerId)
+    {
+        Despawn();
     }
 
     private void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -41,7 +45,8 @@ public class PlayerScript : NetworkBehaviour
         {
             return;
         }
-        
-        _targetTransform.position += new Vector3(_moveDirection.x, _moveDirection.y, 0).normalized * Time.deltaTime;
+
+        _targetTransform.position +=
+            new Vector3(_moveDirection.x, _moveDirection.y, 0).normalized * _moveSpeed * Time.deltaTime;
     }
 }
