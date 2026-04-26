@@ -1,5 +1,4 @@
 using System;
-using Gameplay.Throwables;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +7,12 @@ namespace Gameplay.BullyController
     public class SelectWeaponButton : MonoBehaviour
     {
         [SerializeField]
-        private BasicThrowable _throwablePrefab;
+        private string _throwableName;
 
         [SerializeField]
         private Button _selectButton;
 
-        public event Action<BasicThrowable> OnWeaponSelected;
+        public event Action<string> OnWeaponSelected;
 
         private void Start()
         {
@@ -27,7 +26,7 @@ namespace Gameplay.BullyController
 
         private void HandleSelectButtonClick()
         {
-            OnWeaponSelected?.Invoke(_throwablePrefab);
+            OnWeaponSelected?.Invoke(_throwableName);
         }
     }
 }
