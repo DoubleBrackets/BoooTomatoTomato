@@ -12,16 +12,6 @@ public class PlayerCursor : NetworkBehaviour
     [SerializeField]
     private float _cameraDist;
 
-    public override void OnStartServer()
-    {
-        GameplayManager.Instance.OnGameStarted.AddListener(GameplayManager_HandleGameStarted);
-    }
-
-    public override void OnDespawnServer(NetworkConnection connection)
-    {
-        GameplayManager.Instance.OnGameStarted.RemoveListener(GameplayManager_HandleGameStarted);
-    }
-
     public override void OnStartClient()
     {
         Cursor.visible = false;

@@ -1,5 +1,11 @@
+using FishNet.Connection;
+using FishNet.Example.CustomSyncObject;
 using FishNet.Object;
+using FishNet.Object.Prediction;
+using FishNet.Transporting;
+using Gameplay.GameplaySystems;
 using Gameplay.Throwables;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -7,29 +13,44 @@ using static UnityEngine.InputSystem.InputAction;
 public class BullyController : NetworkBehaviour
 {
     [SerializeField]
-    GameObject _throwable;
+    private GameObject _throwable;
 
     [SerializeField]
-    Vector3 _startVelocity;
+    private Vector3 _startPos = Vector3.forward * -5;
+
+    [SerializeField]
+    private GameplayManager _manager;
+
+    public override void OnStartClient()
+    {
+        if (IsHostStarted)
+        {
+            _manager = FindAnyObjectByType<GameplayManager>();
+        }
+
+        if (!IsOwner) return;
+        Debug.Log("subscribe to attack button");
+        GetComponent<PlayerInput>().currentActionMap.FindAction("Attack").performed += OnAttack;
+    }
 
     public void OnAttack(CallbackContext ctx)
     {
-        if (!IsOwner) return;
         if (!ctx.performed) return;
+        Debug.Log("throw");
         SpawnThrowable();
     }
 
     [ServerRpc]
     private void SpawnThrowable()
     {
-        GameObject obj = Instantiate(_throwable, transform.position, Quaternion.identity);
-        Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.linearVelocity = _startVelocity;
+        if (_manager.CurrentGameplayState != GameplayManager.GameplayState.Gameplay) return;
+
+        Debug.Log("spawn tomato");
+        GameObject obj = Instantiate(_throwable, _startPos, Quaternion.identity);
         Spawn(obj);
-        //ApplyVelocity(obj);
     }
 
+    /*
     [ObserversRpc]
     private void ApplyVelocity(GameObject obj)
     {
@@ -37,4 +58,5 @@ public class BullyController : NetworkBehaviour
         rb.isKinematic = false;
         rb.linearVelocity = _startVelocity;
     }
+    */
 }

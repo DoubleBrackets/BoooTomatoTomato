@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 5594092290119319729}
   - component: {fileID: 1374392090117083377}
   - component: {fileID: 2728428044281436955}
+  - component: {fileID: 392261268407567881}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -163,6 +164,25 @@ MonoBehaviour:
   _placement: 3
   _showOutgoing: 1
   _showIncoming: 1
+--- !u!114 &392261268407567881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290305379326022243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdaae44044276a49a52229c1597e33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Managing.Timing.TimeManager
+  _updateOrder: 0
+  _timingType: 0
+  _allowTickDropping: 1
+  _maximumFrameTicks: 3
+  _tickRate: 30
+  _pingInterval: 1
+  _physicsMode: 1
 --- !u!1 &7600936132484512005
 GameObject:
   m_ObjectHideFlags: 0

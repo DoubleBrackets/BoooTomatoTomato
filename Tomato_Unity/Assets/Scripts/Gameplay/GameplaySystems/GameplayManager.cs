@@ -1,3 +1,4 @@
+using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Throwables;
@@ -5,6 +6,7 @@ using Gameplay.TomaGirl;
 using Script.DevTools;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay.GameplaySystems
 {
@@ -30,6 +32,9 @@ namespace Gameplay.GameplaySystems
         private TomaGirlController _tomaGirlController;
 
         [SerializeField]
+        private GameObject _bully;
+
+        [SerializeField]
         private WaitingToBeginManager _waitingToBeginManager;
 
         [SerializeField]
@@ -46,8 +51,11 @@ namespace Gameplay.GameplaySystems
         private float _roundDuration;
 
         private GameplayState _currentGameplayState = GameplayState.BeforeInitialize;
+        public GameplayState CurrentGameplayState => _currentGameplayState;
 
         private readonly SyncVar<float> _roundTimer = new();
+
+        public UnityEvent<GameplayState> OnGameplayStateChanged;
 
         public override void OnStartServer()
         {
@@ -71,6 +79,7 @@ namespace Gameplay.GameplaySystems
             Debug.Log($"ChangeGameplayState: {_currentGameplayState} -> {newState}");
             ExitGameplayState(_currentGameplayState);
             EnterNewGameplayState(newState);
+            OnGameplayStateChanged?.Invoke(newState);
         }
 
         private void EnterNewGameplayState(GameplayState newState)

@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 1589708742118096557}
   - component: {fileID: 8989385795929904449}
   - component: {fileID: 216899732781952691}
-  - component: {fileID: 8358308322920655007}
   - component: {fileID: 2036412571946238963}
   - component: {fileID: 5435290719646817798}
   - component: {fileID: 8037785399869970319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,11 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11e3c2d56ad4b2e8ee9c797d75c633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Throwables.TestThrowable
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 216899732781952691}
+  _networkObjectCache: {fileID: 216899732781952691}
   _info:
     AnimationToPlay: 
     AnimationClipToPlay: {fileID: 7400000, guid: 1c4f15e112c0c3a4a9907f492af5fddc, type: 2}
     HappinessChange: -5
     ImpactSprite: 
+  _startVelocity: {x: 0, y: 7, z: 4.5}
 --- !u!114 &216899732781952691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +126,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 8358308322920655007}
+  - {fileID: 8989385795929904449}
   - {fileID: 2036412571946238963}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
@@ -135,7 +138,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584244024718759152
+  _initializedTimestamp: -8584243717797734928
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -161,23 +164,8 @@ MonoBehaviour:
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    Scale: {x: 0.5, y: 0.5, z: 0.5}
+    Scale: {x: 0.2, y: 0.2, z: 0.2}
     IsValid: 1
---- !u!114 &8358308322920655007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2555194980567186913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 216899732781952691}
-  _networkObjectCache: {fileID: 216899732781952691}
 --- !u!114 &2036412571946238963
 MonoBehaviour:
   m_ObjectHideFlags: 0

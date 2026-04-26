@@ -29,11 +29,10 @@ namespace Gameplay.GameplaySystems
 
         public void Enter()
         {
-            _beginGameplayButton.gameObject.SetActive(IsServerInitialized);
-
             if (IsServerInitialized)
             {
                 _beginGameplayButton.onClick.AddListener(HandleBeginButtonClick);
+                _beginGameplayButton.gameObject.SetActive(false);
             }
         }
 
@@ -42,9 +41,8 @@ namespace Gameplay.GameplaySystems
             if (IsServerInitialized)
             {
                 _beginGameplayButton.onClick.RemoveListener(HandleBeginButtonClick);
+                _beginGameplayButton.gameObject.SetActive(false);
             }
-
-            _beginGameplayButton.gameObject.SetActive(false);
         }
 
         private void HandleBeginButtonClick()

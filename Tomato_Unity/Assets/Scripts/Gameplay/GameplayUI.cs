@@ -3,10 +3,12 @@ using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Object;
 using FishNet.Transporting;
+using Gameplay.GameplaySystems;
 using Networking;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gameplay
@@ -20,6 +22,9 @@ namespace Gameplay
         private GameObject _gameplayUIContainer;
 
         [SerializeField]
+        private GameplayManager _manager;
+
+        [SerializeField]
         private Button _disconnectButton;
         [SerializeField]
         private Button _startButton;
@@ -31,7 +36,6 @@ namespace Gameplay
             _joinCode.text = UnityRelayManager.Instance.JoinCode;
 
             _disconnectButton.onClick.AddListener(HandleDisconnectButtonClick);
-            _startButton.onClick.AddListener(HandleStartButtonClick);
 
             _networkManager = InstanceFinder.NetworkManager;
 
@@ -47,16 +51,6 @@ namespace Gameplay
         private void OnDestroy()
         {
             _disconnectButton.onClick.RemoveListener(HandleDisconnectButtonClick);
-        }
-
-
-        [ObserversRpc]
-        private void HandleStartButtonClick()
-        {
-            _gameplayUIContainer.SetActive(false);
-
-            if (!IsHostStarted) return;
-            GameplayManager.Instance.OnGameStarted.Invoke();
         }
 
         private void ServerManager_OnRemoteConnectionState(NetworkConnection arg1, RemoteConnectionStateArgs arg2)
@@ -88,4 +82,25 @@ namespace Gameplay
             }
         }
     }
+
+    /*
+     *         foreach (var client in InstanceFinder.ServerManager.Clients)
+        {
+            GameObject obj;
+            /* 
+             * here lies playable tomagirl 2026-2026
+            if (client.Value.IsHost)
+            {
+                obj = Instantiate(_victim);
+                Spawn(obj, client.Value);
+                continue;
+            }
+            
+
+    Debug.Log(client.Value.ClientId);
+            obj = Instantiate(_bully);
+    Spawn(obj, client.Value);
+    Debug.Log($"spawned bully with {client.Value.ClientId} as owner");
+        }
+    */
 }
