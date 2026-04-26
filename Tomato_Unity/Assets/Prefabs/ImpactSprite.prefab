@@ -140,6 +140,16 @@ MonoBehaviour:
   _spriteInfos:
   - SpriteName: 
     Sprite: {fileID: -2413806693520163455, guid: f6b5b7cc4f9cd2c46bc73836a89515f9, type: 3}
+  - SpriteName: tomato
+    Sprite: {fileID: 754176566, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
+  - SpriteName: rose
+    Sprite: {fileID: -1296802114, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
+  - SpriteName: onion
+    Sprite: {fileID: -1001370533, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
+  - SpriteName: soup
+    Sprite: {fileID: -200335277, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
+  - SpriteName: momonga
+    Sprite: {fileID: -2110421635, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
   _fadeTweenSettings:
     duration: 2
     ease: -1
