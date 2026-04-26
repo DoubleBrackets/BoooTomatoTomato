@@ -105,7 +105,7 @@ MonoBehaviour:
     AnimationToPlay: 
     AnimationClipToPlay: {fileID: 7400000, guid: 1a82e8afabf0bec4aad603962fceb580, type: 2}
     HappinessChange: 5
-    ImpactSprite: 
+    ImpactSprite: rose
   _startVelocity: {x: 0, y: 7, z: 4.5}
   _impactSpritePrefab: {fileID: 8020999398602689851, guid: 0a5d497e7dc10e341be6fa33efd1dcaa, type: 3}
   _aimDepth: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584243622189944985
+  _initializedTimestamp: -8584243607718543994
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
