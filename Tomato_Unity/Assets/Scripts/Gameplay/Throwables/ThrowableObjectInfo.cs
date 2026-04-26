@@ -17,7 +17,10 @@ namespace Gameplay.Throwables
 
         public string GetAnimationName => AnimationClipToPlay != null ? AnimationClipToPlay.name : AnimationToPlay;
 
-        [Tooltip("How much happiness gained/lost. Happiness goes from 0 to 1")]
-        public float HappinessChange;
+        [Tooltip(
+            "Gain or lose happiness. All positive values count as 1 happiness, negative values count as -1 happiness")]
+        public int HappinessChange;
+
+        public string ImpactSprite;
     }
 }

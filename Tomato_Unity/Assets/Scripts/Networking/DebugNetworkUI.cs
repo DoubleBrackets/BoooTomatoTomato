@@ -25,7 +25,7 @@ namespace Networking
 
         private UnityRelayManager _relayManager;
 
-        private void Awake()
+        private void OnEnable()
         {
             _relayManager = UnityRelayManager.Instance;
 
@@ -42,7 +42,7 @@ namespace Networking
             InstanceFinder.ClientManager.OnClientConnectionState += HandleClientConnectionState;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _joinButton.onClick.RemoveListener(HandleJoinButtonClick);
             _hostButton.onClick.RemoveListener(HandleHostButtonClick);
@@ -50,6 +50,7 @@ namespace Networking
 
             _relayManager.OnJoinAllocationEvent -= HandleJoinAllocationEvent;
             _relayManager.OnCreateAllocationEvent -= HandleCreateAllocationEvent;
+
             InstanceFinder.ServerManager.OnServerConnectionState -= HandleServerConnectionState;
             InstanceFinder.ClientManager.OnClientConnectionState -= HandleClientConnectionState;
         }

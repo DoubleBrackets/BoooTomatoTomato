@@ -7,7 +7,7 @@ namespace Gameplay.TomaGirl
 {
     public class TomaGirlHitbox : NetworkBehaviour
     {
-        public event Action<ThrowableObjectInfo> OnThrowableHit;
+        public event Action<ThrowableObjectInfo, ThrowableImpact> OnThrowableHit;
 
         public void OnCollisionEnter(Collision other)
         {
@@ -28,7 +28,14 @@ namespace Gameplay.TomaGirl
                 return;
             }
 
-            OnThrowableHit?.Invoke(info);
+            ContactPoint contact = other.GetContact(0);
+
+            OnThrowableHit?.Invoke(info, new ThrowableImpact
+            {
+                ImpactPoint = contact.point,
+                ImpactVelocity = other.relativeVelocity,
+                ImpactNormal = contact.normal
+            });
         }
     }
 }

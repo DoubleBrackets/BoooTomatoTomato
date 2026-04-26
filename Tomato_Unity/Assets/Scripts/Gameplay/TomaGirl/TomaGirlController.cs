@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Throwables;
@@ -17,7 +19,10 @@ namespace Gameplay.TomaGirl
         private Animator _animator;
 
         [SerializeField]
-        private TomaGirlHitbox _hitbox;
+        private List<TomaGirlHitbox> _hitboxes = new();
+
+        [SerializeField]
+        private ImpactSprite _impactSprite;
 
         public event Action<ThrowableObjectInfo> OnThrowableHit;
 
@@ -25,14 +30,40 @@ namespace Gameplay.TomaGirl
 
         private void Awake()
         {
-            _hitbox.OnThrowableHit += HandleThrowableHit;
+            foreach (TomaGirlHitbox hitbox in _hitboxes)
+            {
+                hitbox.OnThrowableHit += HandleThrowableHit;
+            }
+        }
+
+        [ContextMenu("Detect Hitboxes")]
+        private void DetectHitboxes()
+        {
+            _hitboxes = GetComponentsInChildren<TomaGirlHitbox>().ToList();
         }
 
         [Server]
-        private void HandleThrowableHit(ThrowableObjectInfo info)
+        private void HandleThrowableHit(ThrowableObjectInfo info, ThrowableImpact throwableImpact)
         {
             _currentAnimName.Value = info.GetAnimationName;
             RpcPlayAnim(_currentAnimName.Value);
+
+            Vector3 impactPoint = throwableImpact.ImpactPoint;
+
+            RpcSpawnImpactSprite(impactPoint, info.ImpactSprite);
+
+            OnThrowableHit?.Invoke(info);
+        }
+
+        /// <summary>
+        ///     Don't bother to buffer
+        /// </summary>
+        /// <param name="position"></param>
+        [ObserversRpc(RunLocally = true)]
+        private void RpcSpawnImpactSprite(Vector3 position, string impactSprite)
+        {
+            ImpactSprite impactSpriteObj = Instantiate(_impactSprite, position, Quaternion.identity);
+            impactSpriteObj.Initialize(impactSprite);
         }
 
         [ObserversRpc(RunLocally = true, BufferLast = true)]
