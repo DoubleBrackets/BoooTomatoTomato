@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Networking
 {
-    public class NetworkUI : MonoBehaviour
+    public class DebugNetworkUI : MonoBehaviour
     {
         [SerializeField]
         private TMP_InputField _codeInputField;

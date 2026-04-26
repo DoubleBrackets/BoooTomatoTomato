@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-///     Instantiates debug scripts on load.
+///     Instantiates global services on load, before the initial scene calls Awake
 /// </summary>
 public class GlobalServicesInstantiator : MonoBehaviour
 {
