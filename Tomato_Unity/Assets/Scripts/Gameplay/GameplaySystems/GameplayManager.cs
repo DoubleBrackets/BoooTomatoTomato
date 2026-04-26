@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Gameplay.GameplaySystems
 {
     /// <summary>
-    ///     Server handled top level gameplay manager
+    ///     Giant state machine for managing gameplay states.
     /// </summary>
     public class GameplayManager : NetworkBehaviour
     {
@@ -51,8 +51,6 @@ namespace Gameplay.GameplaySystems
 
         public override void OnStartServer()
         {
-            _tomaGirlController.OnThrowableHit += HandleThrowableHitTomaGirl;
-
             // Enter waiting to begin
             ChangeGameplayState(GameplayState.WaitingToBegin);
         }
@@ -98,6 +96,7 @@ namespace Gameplay.GameplaySystems
 
                     if (IsServerInitialized)
                     {
+                        _tomaGirlController.OnThrowableHit += HandleThrowableHitTomaGirl;
                         _roundTimer.Value = _roundDuration;
                     }
 
@@ -133,6 +132,12 @@ namespace Gameplay.GameplaySystems
                 case GameplayState.Gameplay:
                     _roundTimerText.gameObject.SetActive(false);
                     _scoringSystem.SetScoreUIVisible(false);
+
+                    if (IsServerInitialized)
+                    {
+                        _tomaGirlController.OnThrowableHit -= HandleThrowableHitTomaGirl;
+                    }
+
                     break;
                 case GameplayState.EndScreen:
                     _scoringSystem.SetScoreUIVisible(false);
