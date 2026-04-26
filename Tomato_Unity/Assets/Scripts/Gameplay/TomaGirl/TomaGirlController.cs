@@ -1,5 +1,6 @@
 using System;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using Gameplay.Throwables;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace Gameplay.TomaGirl
 
         public event Action<ThrowableObjectInfo> OnThrowableHit;
 
+        private readonly SyncVar<string> _currentAnimName = new();
+
         private void Awake()
         {
             _hitbox.OnThrowableHit += HandleThrowableHit;
@@ -28,7 +31,14 @@ namespace Gameplay.TomaGirl
         [Server]
         private void HandleThrowableHit(ThrowableObjectInfo info)
         {
-            _animator.Play(info.GetAnimationName);
+            _currentAnimName.Value = info.GetAnimationName;
+            RpcPlayAnim(_currentAnimName.Value);
+        }
+
+        [ObserversRpc(RunLocally = true, BufferLast = true)]
+        private void RpcPlayAnim(string animName)
+        {
+            _animator.Play(animName);
         }
     }
 }
