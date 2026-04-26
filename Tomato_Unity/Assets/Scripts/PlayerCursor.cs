@@ -1,4 +1,6 @@
+using FishNet.Connection;
 using FishNet.Object;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +11,16 @@ public class PlayerCursor : NetworkBehaviour
 {
     [SerializeField]
     private float _cameraDist;
+
+    public override void OnStartServer()
+    {
+        GameplayManager.Instance.OnGameStarted.AddListener(GameplayManager_HandleGameStarted);
+    }
+
+    public override void OnDespawnServer(NetworkConnection connection)
+    {
+        GameplayManager.Instance.OnGameStarted.RemoveListener(GameplayManager_HandleGameStarted);
+    }
 
     public override void OnStartClient()
     {
@@ -25,6 +37,11 @@ public class PlayerCursor : NetworkBehaviour
         var pos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, _cameraDist);
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
         transform.position = worldPos;
+    }
+
+    private void GameplayManager_HandleGameStarted()
+    {
+        Despawn();
     }
 
     public override void OnStopClient()

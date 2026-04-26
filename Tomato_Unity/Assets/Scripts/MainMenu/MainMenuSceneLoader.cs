@@ -1,5 +1,7 @@
+using System;
 using System.IO;
 using FishNet;
+using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
 using FishNet.Transporting;
@@ -17,10 +19,12 @@ namespace MainMenu
         [SerializeField]
         private string _gameplayScene;
 
+        private NetworkManager _networkManager;
+
         private void Awake()
         {
-            NetworkManager networkManager = InstanceFinder.NetworkManager;
-            networkManager.ServerManager.OnServerConnectionState += ServerManager_OnServerConnectionState;
+            _networkManager = InstanceFinder.NetworkManager;
+            _networkManager.ServerManager.OnServerConnectionState += ServerManager_OnServerConnectionState;
         }
 
         private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs args)
