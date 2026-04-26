@@ -32,6 +32,11 @@ namespace MainMenu
             _joinButton.onClick.AddListener(HandleJoinButtonClick);
             _hostButton.onClick.AddListener(HandleHostButtonClick);
             _relayManager.OnInitialized += HandleRelayManagerInitialized;
+
+            if (_relayManager.IsInitialized)
+            {
+                LoadRegionDropdown().Forget();
+            }
         }
 
         private void OnDestroy()
