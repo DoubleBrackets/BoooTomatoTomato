@@ -182,6 +182,7 @@ namespace Networking
 
             try
             {
+                Debug.Log($"Allocating relay for region: {regionId}");
                 Allocation allocation = await AllocateRelay(regionId);
 
                 if (allocation == default)
