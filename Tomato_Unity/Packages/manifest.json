@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.alven.fishnet.unitytransport": "https://github.com/ooonush/FishyUnityTransport.git?path=Assets/FishNet/Plugins/FishyUnityTransport",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.firstgeargames.fishnet": "https://github.com/FirstGearGames/FishNet.git?path=Assets/FishNet",
     "com.kyrylokuzyk.primetween": "1.4.0",
     "com.unity.2d.animation": "13.0.4",
     "com.unity.2d.aseprite": "3.0.1",
@@ -22,8 +24,6 @@
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.9",
     "com.veriorpies.parrelsync": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
-    "dev.purrnet.purrnet": "https://github.com/PurrNet/PurrNet.git?path=/Assets/PurrNet#release",
-    "dev.purrnet.purrnity": "https://github.com/youngwoocho02/PurrnityTransport.git",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
     "com.unity.modules.ai": "1.0.0",

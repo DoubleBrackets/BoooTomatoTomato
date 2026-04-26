@@ -1,4 +1,4 @@
-using PurrNet;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,12 +28,7 @@ public class PlayerScript : NetworkBehaviour
         _moveAction.canceled -= OnMovePerformed;
         _moveAction.Disable();
     }
-
-    protected override void OnOwnerDisconnected(PlayerID ownerId)
-    {
-        Despawn();
-    }
-
+    
     private void OnMovePerformed(InputAction.CallbackContext ctx)
     {
         _moveDirection = ctx.ReadValue<Vector2>();
@@ -41,7 +36,7 @@ public class PlayerScript : NetworkBehaviour
 
     public void Update()
     {
-        if (!isOwner)
+        if (!IsOwner)
         {
             return;
         }

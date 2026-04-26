@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using PurrNet;
-using PurrNet.Purrnity;
+using FishNet;
+using FishNet.Transporting.UTP;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Relay;
@@ -70,10 +70,7 @@ namespace Networking
         [Header("Depends")]
 
         [SerializeField]
-        private PurrnityTransport _transport;
-
-        [SerializeField]
-        private NetworkManager _networkManager;
+        private UnityTransport _transport;
 
         public static UnityRelayManager Instance { get; private set; }
 
@@ -100,7 +97,7 @@ namespace Networking
 
         private void OnDestroy()
         {
-            _transport.Disconnect();
+            _transport.Shutdown();
         }
 
         private async UniTaskVoid Initialize(CancellationToken token)
@@ -143,6 +140,11 @@ namespace Networking
             }
         }
 
+        /// <summary>
+        /// Get a list of available relay regions.
+        /// This needs to be called AFTER authentication, so a good idea is to call this in response to OnInitialized. 
+        /// </summary>
+        /// <returns></returns>
         public async UniTask<List<Region>> GetRegionList()
         {
             try
@@ -157,9 +159,14 @@ namespace Networking
             }
         }
 
+        /// <summary>
+        /// Attempt to allocate a relay server and begin hosting (server + client)
+        /// </summary>
+        /// <param name="regionId"></param>
+        /// <exception cref="Exception"></exception>
         public async UniTaskVoid HostGame(string regionId = null)
         {
-            if (_isInAllocation || NetworkManager.isServerStatic)
+            if (_isInAllocation || InstanceFinder.ServerManager.Started)
             {
                 Debug.LogWarning("Already in an allocation or client is started.");
                 return;
@@ -192,13 +199,14 @@ namespace Networking
 
                 Debug.Log($"Relay allocated successfully in ${allocation.Region}. Join code: {joinCode}");
 
-                InitializePurrnetHost(allocation);
+                InitializeHost(allocation);
 
                 OnCreateAllocationEvent?.Invoke(new CreateAllocationEventData(true, joinCode: joinCode));
             }
             catch (Exception e)
             {
                 Debug.LogError($"Error during allocation: {e.Message}");
+                _transport.Shutdown();
                 OnCreateAllocationEvent?.Invoke(new CreateAllocationEventData(false, e.Message));
             }
             finally
@@ -235,9 +243,15 @@ namespace Networking
             }
         }
 
+        /// <summary>
+        /// Attempt to join a relay server using the joinCode
+        /// </summary>
+        /// <param name="joinCode"></param>
+        /// <param name="token"></param>
+        /// <exception cref="Exception"></exception>
         public async UniTaskVoid JoinGame(string joinCode, CancellationToken token)
         {
-            if (_isInAllocation || NetworkManager.isClientStatic)
+            if (_isInAllocation || InstanceFinder.ClientManager.Started)
             {
                 Debug.LogWarning("Already in an allocation or client is started.");
                 return;
@@ -265,13 +279,14 @@ namespace Networking
 
                 Debug.Log($"Successfully joined relay with join code: {joinCode}");
 
-                InitializePurrnetClient(joinAllocation);
+                InitializeClient(joinAllocation);
 
                 OnJoinAllocationEvent?.Invoke(new JoinAllocationEventData(true, joinCode));
             }
             catch (Exception e)
             {
                 Debug.LogError($"Error during join: {e.Message}");
+                _transport.Shutdown();
                 OnJoinAllocationEvent?.Invoke(new JoinAllocationEventData(false, failureReason: e.Message));
             }
             finally
@@ -294,18 +309,24 @@ namespace Networking
             }
         }
 
-        private void InitializePurrnetHost(Allocation allocation)
+        private void InitializeHost(Allocation allocation)
         {
             ConfigureTransportType(out string connectionType);
             _transport.SetRelayServerData(allocation.ToRelayServerData(connectionType));
-            _networkManager.StartHost();
+
+            // Host is both server and client
+            bool startServer = InstanceFinder.ServerManager.StartConnection();
+            if (startServer)
+            {
+                InstanceFinder.ClientManager.StartConnection();
+            }
         }
 
-        private void InitializePurrnetClient(JoinAllocation joinAllocation)
+        private void InitializeClient(JoinAllocation joinAllocation)
         {
             ConfigureTransportType(out string connectionType);
             _transport.SetRelayServerData(joinAllocation.ToRelayServerData(connectionType));
-            _networkManager.StartClient();
+            InstanceFinder.ClientManager.StartConnection();
         }
 
         private void ConfigureTransportType(out string connectionType)

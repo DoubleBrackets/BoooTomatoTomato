@@ -1,11 +1,36 @@
 {
   "dependencies": {
+    "com.alven.fishnet.unitytransport": {
+      "version": "https://github.com/ooonush/FishyUnityTransport.git?path=Assets/FishNet/Plugins/FishyUnityTransport",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.transport": "1.3.1"
+      },
+      "hash": "08756d9733a556018041e52fcb9d2a6035346aeb"
+    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "a9e27c03d411d2fca01cc7410c24c97cd77cb539"
+    },
+    "com.firstgeargames.fishnet": {
+      "version": "https://github.com/FirstGearGames/FishNet.git?path=Assets/FishNet",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.ui": "1.0.0"
+      },
+      "hash": "de19b5d66459f60400ffd0edc443c4da173a01e7"
     },
     "com.kyrylokuzyk.primetween": {
       "version": "1.4.0",
@@ -193,7 +218,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.6",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -402,26 +427,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "610157ad762084380380148ba8ce14e266a6da97"
-    },
-    "dev.purrnet.purrnet": {
-      "version": "https://github.com/PurrNet/PurrNet.git?path=/Assets/PurrNet#release",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.mono-cecil": "1.11.4",
-        "com.unity.nuget.newtonsoft-json": "3.2.1",
-        "com.unity.collections": "2.6.2"
-      },
-      "hash": "266cb63efd3d858d6d2fce68c2b0b2364ca78c24"
-    },
-    "dev.purrnet.purrnity": {
-      "version": "https://github.com/youngwoocho02/PurrnityTransport.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.transport": "2.0.0"
-      },
-      "hash": "c2f65ba34dc440b63d948845d5427e737f7624e3"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
