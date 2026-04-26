@@ -1749,6 +1749,8 @@ GameObject:
   - component: {fileID: 1825744372}
   - component: {fileID: 1825744371}
   - component: {fileID: 1825744373}
+  - component: {fileID: 1825744374}
+  - component: {fileID: 1825744375}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1820,6 +1822,40 @@ MonoBehaviour:
     PacketJitterMS: 0
     PacketDropRate: 0
   m_MaximumClients: 4095
+--- !u!114 &1825744374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825744370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b6b565cd9533c4ebc18003f0fc18a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Utility.PingDisplay
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _placement: 1
+  _hideTickRate: 1
+--- !u!114 &1825744375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825744370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc8f0363ddc75946a958043c5e49a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Utility.BandwidthDisplay
+  _runInRelease: 0
+  _secondsAveraged: 1
+  _updateInterval: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _placement: 3
+  _showOutgoing: 1
+  _showIncoming: 1
 --- !u!1 &1841028801
 GameObject:
   m_ObjectHideFlags: 0
