@@ -1,4 +1,3 @@
-using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Throwables;
@@ -116,6 +115,8 @@ namespace Gameplay.GameplaySystems
                     if (IsServerInitialized)
                     {
                         _endScreenManager.OnRestartGameplay += HandleRestartGameplay;
+                        _endScreenManager.ShowEndScreen(_scoringSystem.HappyImpactCount >
+                                                        _scoringSystem.SadImpactCount);
                     }
 
                     break;

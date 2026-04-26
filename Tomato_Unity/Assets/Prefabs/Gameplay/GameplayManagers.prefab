@@ -110,10 +110,14 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 0}
   _scoringSystem: {fileID: 218606125363258320}
   _tomaGirlController: {fileID: 0}
+  _bully: {fileID: 3825484155848167998, guid: 88debf31bbdb87a4e9a584270b4f45e8, type: 3}
   _waitingToBeginManager: {fileID: 6906313091691335713}
   _endScreenManager: {fileID: 6398720556484738528}
   _roundTimerText: {fileID: 0}
   _roundDuration: 5
+  OnGameplayStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &218606125363258320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +170,5 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7811357730257548443}
   _networkObjectCache: {fileID: 0}
   _restartButton: {fileID: 0}
+  _endScreenCanvasGroup: {fileID: 0}
+  _animator: {fileID: 0}

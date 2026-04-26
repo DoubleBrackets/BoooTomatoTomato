@@ -32,6 +32,8 @@ namespace Gameplay.GameplaySystems
 
         private readonly SyncVar<int> _happyImpactCountValue = new();
         private readonly SyncVar<int> _sadImpactCountValue = new();
+        public int HappyImpactCount => _happyImpactCountValue.Value;
+        public int SadImpactCount => _sadImpactCountValue.Value;
 
         public override void OnStartServer()
         {
