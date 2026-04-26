@@ -23,18 +23,15 @@ public class BullyController : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        if (IsHostStarted)
+        if (IsServerInitialized)
         {
             _manager = FindAnyObjectByType<GameplayManager>();
         }
-
-        if (!IsOwner) return;
-        Debug.Log("subscribe to attack button");
-        GetComponent<PlayerInput>().currentActionMap.FindAction("Attack").performed += OnAttack;
     }
 
     public void OnAttack(CallbackContext ctx)
     {
+        if (!IsOwner) return;
         if (!ctx.performed) return;
         Debug.Log("throw");
         SpawnThrowable();
