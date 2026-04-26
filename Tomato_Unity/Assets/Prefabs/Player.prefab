@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
   <IsNested>k__BackingField: 0
-  WasActiveDuringEdit: 1
+  WasActiveDuringEdit: 0
   WasActiveDuringEdit_Set1: 1
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584244365536698679
+  _initializedTimestamp: -8584244123194190541
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
