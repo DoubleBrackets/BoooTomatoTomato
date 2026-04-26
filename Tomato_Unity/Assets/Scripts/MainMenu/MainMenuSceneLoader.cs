@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace MainMenu
 {
+    /// <summary>
+    ///     When connecting move over to gameplay scene
+    /// </summary>
     public class MainMenuSceneLoader : MonoBehaviour
     {
         [Scene]

@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerCursor : NetworkBehaviour
 {
+    [SerializeField]
+    private float _cameraDist;
+
     public override void OnStartClient()
     {
         Cursor.visible = false;
@@ -19,9 +22,9 @@ public class PlayerCursor : NetworkBehaviour
             return;
         }
 
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        pos.z = 0f;
-        transform.position = pos;
+        var pos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, _cameraDist);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
+        transform.position = worldPos;
     }
 
     public override void OnStopClient()
