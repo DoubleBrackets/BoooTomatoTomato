@@ -40,7 +40,10 @@ namespace Gameplay.GameplaySystems
 
         [SerializeField]
         private EndScreenManager _endScreenManager;
-
+        
+        [SerializeField]
+        private JokeTellManager _jokeTellManager;
+        
         [Header("UI")]
 
         [SerializeField]
@@ -111,6 +114,7 @@ namespace Gameplay.GameplaySystems
                         _tomaGirlController.EnterGameplay();
                         _tomaGirlController.OnThrowableHit += HandleThrowableHitTomaGirl;
                         _roundTimer.Value = _roundDuration;
+                        _jokeTellManager.PlayJoke();
                     }
 
                     break;
