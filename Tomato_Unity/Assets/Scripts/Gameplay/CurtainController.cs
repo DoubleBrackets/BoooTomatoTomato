@@ -10,6 +10,7 @@ public class CurtainController : MonoBehaviour
 
     public void Awake()
     {
+        _manager = FindAnyObjectByType<GameplayManager>();
         _manager.OnGameplayStateChanged.AddListener(GamepalyManager_OnGameplayStateChangedHandler);
         _animator = GetComponent<Animator>();
     }
