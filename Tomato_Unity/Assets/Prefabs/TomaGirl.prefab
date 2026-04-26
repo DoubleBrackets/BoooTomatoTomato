@@ -366,8 +366,8 @@ GameObject:
   - component: {fileID: 8287391693826753147}
   - component: {fileID: 2320738002875924036}
   - component: {fileID: 1160238057930761471}
-  - component: {fileID: 8105562506945683505}
   - component: {fileID: 818349574645372931}
+  - component: {fileID: 6907689673052837168}
   m_Layer: 0
   m_Name: TomaGirl
   m_TagString: Untagged
@@ -473,34 +473,57 @@ MonoBehaviour:
   - {fileID: 1147679973580905440}
   - {fileID: 8616369235758876249}
   - {fileID: 4264360506767709176}
-  _impactSprite: {fileID: 8020999398602689851, guid: 0a5d497e7dc10e341be6fa33efd1dcaa, type: 3}
---- !u!50 &8105562506945683505
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8007643809519272225}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  _rb: {fileID: 6907689673052837168}
+  _acceleration: 15
+  _moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d2ef53aa-b88b-4208-b2c3-f30b1eb85760
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: ac6f027c-80e4-418e-aa12-9b62d2bbc1d5
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 19f4940f-ec6b-4684-ac21-461824e475e2
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 4ec1b42a-35a1-4d31-8456-1a1fa7049455
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: e393e54c-731e-424b-8dae-1fc757cf9e25
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: f9c617ef-ad5d-47d6-a89a-745761ac1701
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
 --- !u!114 &818349574645372931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,3 +570,30 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!54 &6907689673052837168
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007643809519272225}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 3

@@ -93,6 +93,7 @@ namespace Gameplay.GameplaySystems
                     _waitingToBeginManager.Enter();
                     if (IsServerInitialized)
                     {
+                        _tomaGirlController.EnterWaitToBegin();
                         _scoringSystem.ResetScore();
                         _waitingToBeginManager.OnBeginGameplay += HandleBeginGameplay;
                     }
@@ -104,13 +105,13 @@ namespace Gameplay.GameplaySystems
 
                     if (IsServerInitialized)
                     {
+                        _tomaGirlController.EnterGameplay();
                         _tomaGirlController.OnThrowableHit += HandleThrowableHitTomaGirl;
                         _roundTimer.Value = _roundDuration;
                     }
 
                     break;
                 case GameplayState.EndScreen:
-                    _scoringSystem.SetScoreUIVisible(true);
                     _endScreenManager.Enter();
                     if (IsServerInitialized)
                     {
@@ -145,12 +146,12 @@ namespace Gameplay.GameplaySystems
 
                     if (IsServerInitialized)
                     {
+                        _tomaGirlController.ExitGameplay();
                         _tomaGirlController.OnThrowableHit -= HandleThrowableHitTomaGirl;
                     }
 
                     break;
                 case GameplayState.EndScreen:
-                    _scoringSystem.SetScoreUIVisible(false);
                     _endScreenManager.Exit();
                     if (IsServerInitialized)
                     {

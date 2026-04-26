@@ -1,29 +1,57 @@
 using FishNet.Connection;
-using FishNet.Managing.Timing;
 using FishNet.Object;
-using FishNet.Object.Prediction;
-using FishNet.Transporting;
+using Gameplay.TomaGirl;
 using UnityEngine;
 
 namespace Gameplay.Throwables
 {
-    public class TestThrowable : NetworkBehaviour, IThrowableObject
+    public class BasicThrowable : NetworkBehaviour, IThrowableObject
     {
         [SerializeField]
         private ThrowableObjectInfo _info;
+
         [SerializeField]
         private Vector3 _startVelocity = new(0, 7, 4.5f);
+
+        [SerializeField]
+        private ImpactSprite _impactSpritePrefab;
+
+        private bool _alreadyImpacted;
 
         public ThrowableObjectInfo GetInfo()
         {
             return _info;
         }
 
+        public bool AlreadyImpacted => _alreadyImpacted;
+
+        [Server]
+        public void Impact(ThrowableImpact impact)
+        {
+            _alreadyImpacted = true;
+            RpcSpawnImpactSprite(impact.ImpactPoint);
+            Despawn(gameObject);
+        }
+
         public override void OnSpawnServer(NetworkConnection connection)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
+            var rb = GetComponent<Rigidbody>();
+            Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 currentPos = transform.position;
+            Vector3 direction = cursorPos - currentPos;
             rb.isKinematic = false;
-            rb.linearVelocity = _startVelocity;
+            rb.linearVelocity = _startVelocity.magnitude * direction.normalized;
+        }
+
+        /// <summary>
+        ///     Don't bother to buffer
+        /// </summary>
+        /// <param name="position"></param>
+        [ObserversRpc(RunLocally = true)]
+        private void RpcSpawnImpactSprite(Vector3 position)
+        {
+            ImpactSprite impactSpriteObj = Instantiate(_impactSpritePrefab, position, Quaternion.identity);
+            impactSpriteObj.Initialize(_info.ImpactSprite);
         }
 
         /*

@@ -107,6 +107,7 @@ MonoBehaviour:
     HappinessChange: -5
     ImpactSprite: 
   _startVelocity: {x: 0, y: 7, z: 4.5}
+  _impactSpritePrefab: {fileID: 8020999398602689851, guid: 0a5d497e7dc10e341be6fa33efd1dcaa, type: 3}
 --- !u!114 &216899732781952691
 MonoBehaviour:
   m_ObjectHideFlags: 0

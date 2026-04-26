@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using PrimeTween;
 using UnityEngine;
 
-namespace Gameplay.TomaGirl
+namespace Gameplay.Throwables
 {
     public class ImpactSprite : MonoBehaviour
     {

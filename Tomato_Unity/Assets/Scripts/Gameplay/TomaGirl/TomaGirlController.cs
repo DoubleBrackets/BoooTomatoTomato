@@ -5,6 +5,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Gameplay.Throwables;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Gameplay.TomaGirl
 {
@@ -22,11 +23,24 @@ namespace Gameplay.TomaGirl
         private List<TomaGirlHitbox> _hitboxes = new();
 
         [SerializeField]
-        private ImpactSprite _impactSprite;
+        private Rigidbody _rb;
+
+        [SerializeField]
+        private float _acceleration;
+
+        [SerializeField]
+        private InputAction _moveAction;
+
+        [SerializeField]
+        private Transform _initialSpawnPos;
 
         public event Action<ThrowableObjectInfo> OnThrowableHit;
 
         private readonly SyncVar<string> _currentAnimName = new();
+
+        private Vector2 _moveInput;
+
+        private bool _canMove;
 
         private void Awake()
         {
@@ -34,6 +48,54 @@ namespace Gameplay.TomaGirl
             {
                 hitbox.OnThrowableHit += HandleThrowableHit;
             }
+        }
+
+        public override void OnStartServer()
+        {
+            _moveAction.performed += OnMoveInput;
+            _moveAction.canceled += OnMoveInput;
+        }
+
+        public override void OnStopServer()
+        {
+            _moveAction.performed -= OnMoveInput;
+            _moveAction.canceled -= OnMoveInput;
+        }
+
+        private void OnMoveInput(InputAction.CallbackContext obj)
+        {
+            _moveInput = obj.ReadValue<Vector2>();
+        }
+
+        [Server]
+        public void EnterWaitToBegin()
+        {
+            _canMove = false;
+            _rb.transform.position = _initialSpawnPos.position;
+        }
+
+        [Server]
+        public void EnterGameplay()
+        {
+            _canMove = true;
+        }
+
+        [Server]
+        public void ExitGameplay()
+        {
+            _canMove = false;
+        }
+
+        private void Update()
+        {
+            if (!IsServerInitialized || !_canMove)
+            {
+            }
+
+            // No moving rip
+            /*Vector3 curVel = _rb.linearVelocity;
+            curVel.x += _moveInput.x * _acceleration * Time.deltaTime;
+            _rb.linearVelocity = curVel;*/
         }
 
         [ContextMenu("Detect Hitboxes")]
@@ -47,23 +109,7 @@ namespace Gameplay.TomaGirl
         {
             _currentAnimName.Value = info.GetAnimationName;
             RpcPlayAnim(_currentAnimName.Value);
-
-            Vector3 impactPoint = throwableImpact.ImpactPoint;
-
-            RpcSpawnImpactSprite(impactPoint, info.ImpactSprite);
-
             OnThrowableHit?.Invoke(info);
-        }
-
-        /// <summary>
-        ///     Don't bother to buffer
-        /// </summary>
-        /// <param name="position"></param>
-        [ObserversRpc(RunLocally = true)]
-        private void RpcSpawnImpactSprite(Vector3 position, string impactSprite)
-        {
-            ImpactSprite impactSpriteObj = Instantiate(_impactSprite, position, Quaternion.identity);
-            impactSpriteObj.Initialize(impactSprite);
         }
 
         [ObserversRpc(RunLocally = true, BufferLast = true)]

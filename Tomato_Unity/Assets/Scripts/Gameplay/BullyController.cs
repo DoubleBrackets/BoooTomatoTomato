@@ -1,13 +1,6 @@
-using FishNet.Connection;
-using FishNet.Example.CustomSyncObject;
 using FishNet.Object;
-using FishNet.Object.Prediction;
-using FishNet.Transporting;
 using Gameplay.GameplaySystems;
-using Gameplay.Throwables;
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class BullyController : NetworkBehaviour
@@ -21,18 +14,24 @@ public class BullyController : NetworkBehaviour
     [SerializeField]
     private GameplayManager _manager;
 
-    public override void OnStartClient()
+    public override void OnStartServer()
     {
-        if (IsServerInitialized)
-        {
-            _manager = FindAnyObjectByType<GameplayManager>();
-        }
+        Debug.Log("ASDF");
+        _manager = FindAnyObjectByType<GameplayManager>();
     }
 
     public void OnAttack(CallbackContext ctx)
     {
-        if (!IsOwner) return;
-        if (!ctx.performed) return;
+        if (!IsOwner)
+        {
+            return;
+        }
+
+        if (!ctx.performed)
+        {
+            return;
+        }
+
         Debug.Log("throw");
         SpawnThrowable();
     }
@@ -40,7 +39,10 @@ public class BullyController : NetworkBehaviour
     [ServerRpc]
     private void SpawnThrowable()
     {
-        if (_manager.CurrentGameplayState != GameplayManager.GameplayState.Gameplay) return;
+        if (_manager.CurrentGameplayState != GameplayManager.GameplayState.Gameplay)
+        {
+            return;
+        }
 
         Debug.Log("spawn tomato");
         GameObject obj = Instantiate(_throwable, _startPos, Quaternion.identity);

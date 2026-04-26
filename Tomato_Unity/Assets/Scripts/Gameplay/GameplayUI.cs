@@ -5,10 +5,8 @@ using FishNet.Object;
 using FishNet.Transporting;
 using Gameplay.GameplaySystems;
 using Networking;
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gameplay
@@ -26,6 +24,7 @@ namespace Gameplay
 
         [SerializeField]
         private Button _disconnectButton;
+
         [SerializeField]
         private Button _startButton;
 
@@ -44,7 +43,8 @@ namespace Gameplay
                 Destroy(_startButton.gameObject);
                 return;
             }
-            _startButton.interactable = false;
+
+            // _startButton.interactable = false;
             _networkManager.ServerManager.OnRemoteConnectionState += ServerManager_OnRemoteConnectionState;
         }
 
@@ -58,16 +58,17 @@ namespace Gameplay
             Debug.Log(_networkManager.ServerManager.Clients.Count);
             if (arg2.ConnectionState != RemoteConnectionState.Stopped)
             {
-                _startButton.interactable = true;
+                // _startButton.interactable = true;
                 return;
             }
 
-            if (_networkManager.ServerManager.Clients.Count - 1 > 1) return;
+            if (_networkManager.ServerManager.Clients.Count - 1 > 1)
+            {
+                return;
+            }
 
-            _startButton.interactable = false;
-
+            // _startButton.interactable = false;
         }
-
 
         private void HandleDisconnectButtonClick()
         {
@@ -87,7 +88,7 @@ namespace Gameplay
      *         foreach (var client in InstanceFinder.ServerManager.Clients)
         {
             GameObject obj;
-            /* 
+            /*
              * here lies playable tomagirl 2026-2026
             if (client.Value.IsHost)
             {
@@ -95,7 +96,7 @@ namespace Gameplay
                 Spawn(obj, client.Value);
                 continue;
             }
-            
+
 
     Debug.Log(client.Value.ClientId);
             obj = Instantiate(_bully);

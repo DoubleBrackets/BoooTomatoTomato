@@ -23,19 +23,23 @@ namespace Gameplay.TomaGirl
             }
 
             ThrowableObjectInfo info = throwable.GetInfo();
-            if (info == null)
+            if (info == null || throwable.AlreadyImpacted)
             {
                 return;
             }
 
             ContactPoint contact = other.GetContact(0);
 
-            OnThrowableHit?.Invoke(info, new ThrowableImpact
+            var impact = new ThrowableImpact
             {
                 ImpactPoint = contact.point,
                 ImpactVelocity = other.relativeVelocity,
                 ImpactNormal = contact.normal
-            });
+            };
+
+            throwable.Impact(impact);
+
+            OnThrowableHit?.Invoke(info, impact);
         }
     }
 }
