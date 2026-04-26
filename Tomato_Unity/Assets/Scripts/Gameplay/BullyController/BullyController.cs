@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using FishNet.Object;
+using Gameplay.BullyController;
 using Gameplay.GameplaySystems;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
@@ -10,6 +12,9 @@ public class BullyController : NetworkBehaviour
 
     [SerializeField]
     private Vector3 _startPos = Vector3.forward * -5;
+
+    [SerializeField]
+    private List<SelectWeaponButton> _weaponButtons;
 
     public void OnAttack(CallbackContext ctx)
     {
