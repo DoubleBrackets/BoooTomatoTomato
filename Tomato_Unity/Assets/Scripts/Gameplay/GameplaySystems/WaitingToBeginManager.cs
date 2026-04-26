@@ -47,6 +47,7 @@ namespace Gameplay.GameplaySystems
 
         private void HandleBeginButtonClick()
         {
+            Debug.Log("HANDLE CLICKED");
             OnBeginGameplay?.Invoke();
         }
     }

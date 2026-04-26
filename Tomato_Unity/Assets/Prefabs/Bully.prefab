@@ -306,9 +306,11 @@ MonoBehaviour:
   _weaponSelectionCanvas: {fileID: 3668665674930555267}
   _startPos: {x: -0, y: -0, z: -5}
   _weaponButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6169748559996937365}
+  - {fileID: 923078017804828350}
+  - {fileID: 1219048965782192336}
+  - {fileID: 1594430107219890767}
+  - {fileID: 6878093505216591200}
 --- !u!114 &4206144396038377668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +534,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+--- !u!114 &923078017804828350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023113691385652023, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+  m_PrefabInstance: {fileID: 2682790176640671113}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a7075afd0e405a9fd4b63fad721c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.BullyController.SelectWeaponButton
 --- !u!224 &1794495778955881295 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457573059738040006, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
@@ -647,6 +660,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457573059738040006, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
   m_PrefabInstance: {fileID: 4115920012616147943}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219048965782192336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023113691385652023, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+  m_PrefabInstance: {fileID: 4115920012616147943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a7075afd0e405a9fd4b63fad721c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.BullyController.SelectWeaponButton
 --- !u!1001 &4599525826683138424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,6 +781,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457573059738040006, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
   m_PrefabInstance: {fileID: 4599525826683138424}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1594430107219890767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023113691385652023, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+  m_PrefabInstance: {fileID: 4599525826683138424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a7075afd0e405a9fd4b63fad721c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.BullyController.SelectWeaponButton
 --- !u!1001 &8540976068481406551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -867,6 +902,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457573059738040006, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
   m_PrefabInstance: {fileID: 8540976068481406551}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6878093505216591200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023113691385652023, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+  m_PrefabInstance: {fileID: 8540976068481406551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a7075afd0e405a9fd4b63fad721c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.BullyController.SelectWeaponButton
 --- !u!1001 &8965286159029700514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -973,3 +1019,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457573059738040006, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
   m_PrefabInstance: {fileID: 8965286159029700514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6169748559996937365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023113691385652023, guid: b2bcd10168345eb48bef0b3edb8877c6, type: 3}
+  m_PrefabInstance: {fileID: 8965286159029700514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a7075afd0e405a9fd4b63fad721c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.BullyController.SelectWeaponButton

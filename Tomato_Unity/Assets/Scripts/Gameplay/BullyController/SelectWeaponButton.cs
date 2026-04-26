@@ -14,12 +14,12 @@ namespace Gameplay.BullyController
 
         public event Action<string> OnWeaponSelected;
 
-        private void Start()
+        private void OnEnable()
         {
             _selectButton.onClick.AddListener(HandleSelectButtonClick);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _selectButton.onClick.RemoveListener(HandleSelectButtonClick);
         }

@@ -34,7 +34,6 @@ public class BullyController : NetworkBehaviour
     {
         if (IsOwner)
         {
-            Debug.Log("IS OWNER");
             foreach (SelectWeaponButton button in _weaponButtons)
             {
                 button.OnWeaponSelected += HandleWeaponSelected;
@@ -65,7 +64,6 @@ public class BullyController : NetworkBehaviour
     [ServerRpc(RunLocally = true)]
     private void SetThrowable(string throwableName)
     {
-        Debug.Log($"Selected throwable: {throwableName}");
         _selectedThrowable =
             _throwableInfos.Find(t => t.Name == throwableName).Throwable;
     }
