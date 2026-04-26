@@ -7,28 +7,27 @@ using static UnityEngine.InputSystem.InputAction;
 public class BullyController : NetworkBehaviour
 {
     [SerializeField]
-    GameObject throwable;
+    GameObject _throwable;
 
     [SerializeField]
-    Vector3 startVelocity;
+    Vector3 _startVelocity;
 
     public void OnAttack(CallbackContext ctx)
     {
-        Debug.Log("owner check");
         if (!IsOwner) return;
-        Debug.Log("attack");
         if (!ctx.performed) return;
         SpawnThrowable();
-        Debug.Log("attacked");
     }
 
     [ServerRpc]
     private void SpawnThrowable()
     {
-        Debug.Log("spawn tomato");
-        GameObject obj = Instantiate(throwable, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(_throwable, transform.position, Quaternion.identity);
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.linearVelocity = _startVelocity;
         Spawn(obj);
-        ApplyVelocity(obj);
+        //ApplyVelocity(obj);
     }
 
     [ObserversRpc]
@@ -36,6 +35,6 @@ public class BullyController : NetworkBehaviour
     {
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.linearVelocity = (transform.forward * 5) + (transform.up * 10);
+        rb.linearVelocity = _startVelocity;
     }
 }

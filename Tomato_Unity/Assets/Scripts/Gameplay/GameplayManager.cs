@@ -25,12 +25,15 @@ public class GameplayManager : NetworkBehaviour
         foreach (var client in InstanceFinder.ServerManager.Clients)
         {
             GameObject obj;
+            /* 
+             * here lies playable tomagirl 2026-2026
             if (client.Value.IsHost)
             {
                 obj = Instantiate(_victim);
                 Spawn(obj, client.Value);
                 continue;
             }
+            */
 
             obj = Instantiate(_bully);
             Spawn(obj, client.Value);
