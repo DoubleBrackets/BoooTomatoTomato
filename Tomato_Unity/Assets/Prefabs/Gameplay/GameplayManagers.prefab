@@ -54,7 +54,11 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 3491094059173752192}
+  - {fileID: 218606125363258320}
+  - {fileID: 6906313091691335713}
+  - {fileID: 6398720556484738528}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -65,7 +69,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584243649194320559
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -84,15 +88,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 6292446789260343309
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &3491094059173752192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,16 +109,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef1109ed1134005ab67cb3fbca72fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Systems.GameplayManager
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7811357730257548443}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7811357730257548443}
   _scoringSystem: {fileID: 218606125363258320}
   _tomaGirlController: {fileID: 0}
   _bully: {fileID: 3825484155848167998, guid: 88debf31bbdb87a4e9a584270b4f45e8, type: 3}
   _waitingToBeginManager: {fileID: 6906313091691335713}
   _endScreenManager: {fileID: 6398720556484738528}
   _roundTimerText: {fileID: 0}
-  _roundDuration: 5
+  _roundDuration: 60
   OnGameplayStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -130,9 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696a46a72f004be8a83ac298fa9eaad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Systems.HappinessSystem
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 7811357730257548443}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7811357730257548443}
   _balanceBar: {fileID: 0}
   _scoreUI: {fileID: 0}
   _happyImpactCountText: {fileID: 0}
@@ -149,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff95be59d37e4d849cd92edc72af4b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.GameplaySystems.WaitingToBeginManager
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 7811357730257548443}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7811357730257548443}
   _beginGameplayButton: {fileID: 0}
   _director: {fileID: 0}
 --- !u!114 &6398720556484738528
@@ -166,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e212b55f96f14f7aa687234116e1ceb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.GameplaySystems.EndScreenManager
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 7811357730257548443}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7811357730257548443}
   _restartButton: {fileID: 0}
   _endScreenCanvasGroup: {fileID: 0}
   _animator: {fileID: 0}

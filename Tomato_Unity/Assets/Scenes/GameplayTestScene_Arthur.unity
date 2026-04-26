@@ -659,11 +659,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11e3c2d56ad4b2e8ee9c797d75c633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Throwables.TestThrowable
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 435111814}
+  _networkObjectCache: {fileID: 0}
   _info:
     AnimationToPlay: 
     AnimationClipToPlay: {fileID: 7400000, guid: 1c4f15e112c0c3a4a9907f492af5fddc, type: 2}
     HappinessChange: -1
     ImpactSprite: 
+  _startVelocity: {x: 0, y: 7, z: 4.5}
 --- !u!54 &435111816
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2920,11 +2924,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11e3c2d56ad4b2e8ee9c797d75c633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Throwables.TestThrowable
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 1854876624}
+  _networkObjectCache: {fileID: 0}
   _info:
     AnimationToPlay: 
     AnimationClipToPlay: {fileID: 7400000, guid: fce597c02d2abf144a8033507037a344, type: 2}
     HappinessChange: 1
     ImpactSprite: 
+  _startVelocity: {x: 0, y: 7, z: 4.5}
 --- !u!54 &1854876619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3600,6 +3608,10 @@ PrefabInstance:
     - target: {fileID: 1440089440304535421, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: m_Name
       value: GameplayManagers
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
+      propertyPath: _roundDuration
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: _roundTimerText

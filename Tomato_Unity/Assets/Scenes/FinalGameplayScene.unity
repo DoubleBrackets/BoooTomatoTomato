@@ -1257,32 +1257,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1883531698}
     m_Modifications:
-    - target: {fileID: 3453761865187716485, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-    - target: {fileID: 3453761865187716485, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-    - target: {fileID: 3453761865187716485, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4196180023188577907, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900797618997287180, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-    - target: {fileID: 5900797618997287180, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-    - target: {fileID: 5900797618997287180, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
-      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679836442315228279, guid: 65472708d94dc3c478a34001d49e0880, type: 3}
@@ -2091,11 +2067,11 @@ PrefabInstance:
     - target: {fileID: 218606125363258320, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: _sadImpactCountText
       value: 
-      objectReference: {fileID: 1533744791}
+      objectReference: {fileID: 1533744792}
     - target: {fileID: 218606125363258320, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: _happyImpactCountText
       value: 
-      objectReference: {fileID: 1533744792}
+      objectReference: {fileID: 1533744791}
     - target: {fileID: 1329833255191540732, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2139,6 +2115,10 @@ PrefabInstance:
     - target: {fileID: 1440089440304535421, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: m_Name
       value: GameplayManagers
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
+      propertyPath: _roundDuration
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: _roundTimerText

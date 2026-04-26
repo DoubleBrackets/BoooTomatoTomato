@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8878089585724441191}
   - component: {fileID: 3453761865187716485}
   m_Layer: 5
-  m_Name: HappyImpacts
+  m_Name: SadImpacts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,15 +178,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
+  m_sharedMaterial: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287024895
-  m_fontColor: {r: 1, g: 0.8076287, b: 0.5235849, a: 1}
+    rgba: 4281936299
+  m_fontColor: {r: 0.6698113, g: 0.16113384, b: 0.22379996, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 578695881114799310}
   - component: {fileID: 5900797618997287180}
   m_Layer: 5
-  m_Name: SadImpacts
+  m_Name: HappyImpacts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,15 +315,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
+  m_sharedMaterial: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294953622
-  m_fontColor: {r: 0.5882353, g: 0.79215693, b: 1, a: 1}
+    rgba: 4290156287
+  m_fontColor: {r: 1, g: 0.5896226, b: 0.7137147, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -444,7 +444,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924175126005079346}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5896226, g: 0.7929059, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5424528, b: 0.62271523, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.77455133, b: 0.4009434, a: 1}
+  m_Color: {r: 0.6132076, g: 0.2053667, b: 0.24558172, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

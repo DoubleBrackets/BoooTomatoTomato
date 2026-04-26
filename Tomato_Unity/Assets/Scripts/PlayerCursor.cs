@@ -1,6 +1,4 @@
-using FishNet.Connection;
 using FishNet.Object;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +12,6 @@ public class PlayerCursor : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        Cursor.visible = false;
     }
 
     private void Update()
@@ -36,6 +33,5 @@ public class PlayerCursor : NetworkBehaviour
 
     public override void OnStopClient()
     {
-        Cursor.visible = true;
     }
 }
