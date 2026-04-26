@@ -141,8 +141,8 @@ namespace Networking
         }
 
         /// <summary>
-        /// Get a list of available relay regions.
-        /// This needs to be called AFTER authentication, so a good idea is to call this in response to OnInitialized. 
+        ///     Get a list of available relay regions.
+        ///     This needs to be called AFTER authentication, so a good idea is to call this in response to OnInitialized.
         /// </summary>
         /// <returns></returns>
         public async UniTask<List<Region>> GetRegionList()
@@ -160,7 +160,7 @@ namespace Networking
         }
 
         /// <summary>
-        /// Attempt to allocate a relay server and begin hosting (server + client)
+        ///     Attempt to allocate a relay server and begin hosting (server + client)
         /// </summary>
         /// <param name="regionId"></param>
         /// <exception cref="Exception"></exception>
@@ -244,7 +244,7 @@ namespace Networking
         }
 
         /// <summary>
-        /// Attempt to join a relay server using the joinCode
+        ///     Attempt to join a relay server using the joinCode
         /// </summary>
         /// <param name="joinCode"></param>
         /// <param name="token"></param>
@@ -278,6 +278,8 @@ namespace Networking
                 }
 
                 Debug.Log($"Successfully joined relay with join code: {joinCode}");
+
+                JoinCode = joinCode;
 
                 InitializeClient(joinAllocation);
 

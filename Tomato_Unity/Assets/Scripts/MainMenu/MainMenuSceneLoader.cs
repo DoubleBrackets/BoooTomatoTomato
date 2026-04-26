@@ -1,3 +1,4 @@
+using System.IO;
 using FishNet;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
@@ -26,12 +27,17 @@ namespace MainMenu
         {
             if (args.ConnectionState == LocalConnectionState.Started)
             {
-                SceneLoadData sld = new(_gameplayScene)
+                SceneLoadData sld = new(GetSceneName(_gameplayScene))
                 {
                     ReplaceScenes = ReplaceOption.All
                 };
                 InstanceFinder.SceneManager.LoadGlobalScenes(sld);
             }
+        }
+
+        private string GetSceneName(string fullPath)
+        {
+            return Path.GetFileNameWithoutExtension(fullPath);
         }
     }
 }
