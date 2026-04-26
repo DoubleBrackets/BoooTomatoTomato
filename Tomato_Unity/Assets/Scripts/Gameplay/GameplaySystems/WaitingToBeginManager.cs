@@ -32,7 +32,7 @@ namespace Gameplay.GameplaySystems
             if (IsServerInitialized)
             {
                 _beginGameplayButton.onClick.AddListener(HandleBeginButtonClick);
-                _beginGameplayButton.gameObject.SetActive(false);
+                _beginGameplayButton.gameObject.SetActive(true);
             }
         }
 
