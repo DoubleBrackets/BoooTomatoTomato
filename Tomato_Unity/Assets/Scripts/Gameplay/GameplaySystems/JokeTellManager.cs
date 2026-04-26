@@ -20,6 +20,7 @@ namespace Gameplay.GameplaySystems
             public string Punchline;
         }
 
+        [SerializeField]
         private List<Joke> _jokes;
 
         [SerializeField]
@@ -36,6 +37,12 @@ namespace Gameplay.GameplaySystems
 
         [SerializeField]
         private float _lingerTime;
+
+        private void Awake()
+        {
+            _jokeText.text = "";
+            _jokePunchlineText.text = "";
+        }
 
         [ObserversRpc(RunLocally = true)]
         private void TellJoke(string joke, string punchline)

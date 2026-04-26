@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 218606125363258320}
   - component: {fileID: 6906313091691335713}
   - component: {fileID: 6398720556484738528}
+  - component: {fileID: 6725387540391291160}
   m_Layer: 0
   m_Name: GameplayManagers
   m_TagString: Untagged
@@ -59,6 +60,7 @@ MonoBehaviour:
   - {fileID: 218606125363258320}
   - {fileID: 6906313091691335713}
   - {fileID: 6398720556484738528}
+  - {fileID: 6725387540391291160}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -69,7 +71,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584243649194320559
+  _initializedTimestamp: -8584243590080073972
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -117,8 +119,9 @@ MonoBehaviour:
   _bully: {fileID: 3825484155848167998, guid: 88debf31bbdb87a4e9a584270b4f45e8, type: 3}
   _waitingToBeginManager: {fileID: 6906313091691335713}
   _endScreenManager: {fileID: 6398720556484738528}
+  _jokeTellManager: {fileID: 6725387540391291160}
   _roundTimerText: {fileID: 0}
-  _roundDuration: 60
+  _roundDuration: 15
   OnGameplayStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -176,3 +179,36 @@ MonoBehaviour:
   _restartButton: {fileID: 0}
   _endScreenCanvasGroup: {fileID: 0}
   _animator: {fileID: 0}
+--- !u!114 &6725387540391291160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440089440304535421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a47f534b3c4d65b0d6bb155e0b1253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.GameplaySystems.JokeTellManager
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 7811357730257548443}
+  _networkObjectCache: {fileID: 7811357730257548443}
+  _jokes:
+  - JokeStart: what did the fast tomato say to the other?
+    Punchline: ketchup!!! LOL
+  - JokeStart: "went to the doctor the other day\u2026"
+    Punchline: got everything checked from my head tomaTOES!!!!
+  - JokeStart: where did the tomato take pasta out for a dance?
+    Punchline: the MEAT BALL!!!!!
+  - JokeStart: why did the tomato turn red?
+    Punchline: because it saw the salad dressing!!!!!! LMAO
+  - JokeStart: "guy who invented autocorrect just died\u2026"
+    Punchline: "his funeral wikl be held tomato\u2026\u2026\u2026"
+  - JokeStart: what do you need to fix a cracked tomato?
+    Punchline: TOMATO PASTE!!!!!!! :DDDDD
+  _jokeText: {fileID: 0}
+  _jokePunchlineText: {fileID: 0}
+  _initialDelay: 2.5
+  _delayBetweenParts: 5
+  _lingerTime: 4
