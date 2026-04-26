@@ -25,6 +25,7 @@ namespace Gameplay.TomaGirl
             ThrowableObjectInfo info = throwable.GetInfo();
             if (info == null || throwable.AlreadyImpacted)
             {
+                Debug.Log($"throwable is null or already impacted: {throwable} {throwable?.AlreadyImpacted}");
                 return;
             }
 

@@ -2,6 +2,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using Gameplay.TomaGirl;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Gameplay.Throwables
 {
@@ -15,6 +16,9 @@ namespace Gameplay.Throwables
 
         [SerializeField]
         private ImpactSprite _impactSpritePrefab;
+
+        [SerializeField]
+        private float _aimDepth;
 
         private bool _alreadyImpacted;
 
@@ -36,7 +40,9 @@ namespace Gameplay.Throwables
         public override void OnSpawnServer(NetworkConnection connection)
         {
             var rb = GetComponent<Rigidbody>();
-            Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Vector3 withDepth = new(mousePos.x, mousePos.y, _aimDepth);
+            Vector3 cursorPos = Camera.main.ScreenToWorldPoint(withDepth);
             Vector3 currentPos = transform.position;
             Vector3 direction = cursorPos - currentPos;
             rb.isKinematic = false;

@@ -22,6 +22,8 @@ namespace Gameplay.GameplaySystems
             EndScreen
         }
 
+        public static GameplayManager Instance { get; private set; }
+
         [Header("Depends")]
 
         [SerializeField]
@@ -58,13 +60,14 @@ namespace Gameplay.GameplaySystems
 
         public override void OnStartServer()
         {
+            Instance = this;
             // Enter waiting to begin
             ChangeGameplayState(GameplayState.WaitingToBegin);
         }
 
         public override void OnStopServer()
         {
-            _tomaGirlController.OnThrowableHit -= HandleThrowableHitTomaGirl;
+            ExitGameplayState(_currentGameplayState);
         }
 
         /// <summary>
@@ -116,7 +119,7 @@ namespace Gameplay.GameplaySystems
                     if (IsServerInitialized)
                     {
                         _endScreenManager.OnRestartGameplay += HandleRestartGameplay;
-                        _endScreenManager.ShowEndScreen(_scoringSystem.HappyImpactCount >
+                        _endScreenManager.ShowEndScreen(_scoringSystem.HappyImpactCount >=
                                                         _scoringSystem.SadImpactCount);
                     }
 

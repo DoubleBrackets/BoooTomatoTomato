@@ -11,15 +11,6 @@ public class BullyController : NetworkBehaviour
     [SerializeField]
     private Vector3 _startPos = Vector3.forward * -5;
 
-    [SerializeField]
-    private GameplayManager _manager;
-
-    public override void OnStartServer()
-    {
-        Debug.Log("ASDF");
-        _manager = FindAnyObjectByType<GameplayManager>();
-    }
-
     public void OnAttack(CallbackContext ctx)
     {
         if (!IsOwner)
@@ -39,7 +30,7 @@ public class BullyController : NetworkBehaviour
     [ServerRpc]
     private void SpawnThrowable()
     {
-        if (_manager.CurrentGameplayState != GameplayManager.GameplayState.Gameplay)
+        if (GameplayManager.Instance.CurrentGameplayState != GameplayManager.GameplayState.Gameplay)
         {
             return;
         }
