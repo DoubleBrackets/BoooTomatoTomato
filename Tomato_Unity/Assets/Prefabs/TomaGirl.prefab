@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa8d320c7dd4e1e9a551c3a3a6e1037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.TomaGirl.TomaGirlHitbox
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 2320738002875924036}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2320738002875924036}
 --- !u!1 &6250687957721168409
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,9 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Animating.NetworkAnimator
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 2320738002875924036}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2320738002875924036}
   IgnoredParameters: []
   _animator: {fileID: 9186761118594980269}
   _synchronizeWhenDisabled: 0
@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 8287391693826753147}
   - component: {fileID: 2320738002875924036}
   - component: {fileID: 1160238057930761471}
+  - component: {fileID: 8105562506945683505}
   m_Layer: 0
   m_Name: TomaGirl
   m_TagString: Untagged
@@ -261,7 +262,10 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 1160238057930761471}
+  - {fileID: 4641410088701442426}
+  - {fileID: 3128933317689491643}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -272,7 +276,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584244204516456200
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -291,15 +295,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 16520992777984935649
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &1160238057930761471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,8 +316,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6decf43c312a74b86856421da15625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TomaGirl
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2320738002875924036}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2320738002875924036}
   _animator: {fileID: 9186761118594980269}
   _hitbox: {fileID: 3128933317689491643}
+--- !u!50 &8105562506945683505
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007643809519272225}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
