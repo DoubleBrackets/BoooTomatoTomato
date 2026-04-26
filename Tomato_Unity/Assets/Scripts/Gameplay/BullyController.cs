@@ -9,6 +9,9 @@ public class BullyController : NetworkBehaviour
     [SerializeField]
     GameObject throwable;
 
+    [SerializeField]
+    Vector3 startVelocity;
+
     public void OnAttack(CallbackContext ctx)
     {
         Debug.Log("owner check");
@@ -24,7 +27,15 @@ public class BullyController : NetworkBehaviour
     {
         Debug.Log("spawn tomato");
         GameObject obj = Instantiate(throwable, transform.position, Quaternion.identity);
-        obj.GetComponent<Rigidbody>().linearVelocity = (transform.forward * 5) + (transform.up * 10);
         Spawn(obj);
+        ApplyVelocity(obj);
+    }
+
+    [ObserversRpc]
+    private void ApplyVelocity(GameObject obj)
+    {
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.linearVelocity = (transform.forward * 5) + (transform.up * 10);
     }
 }
