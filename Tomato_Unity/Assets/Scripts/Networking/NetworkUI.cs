@@ -9,9 +9,6 @@ namespace Networking
     public class NetworkUI : MonoBehaviour
     {
         [SerializeField]
-        private UnityRelayManager _relayManager;
-
-        [SerializeField]
         private TMP_InputField _codeInputField;
 
         [SerializeField]
@@ -26,8 +23,12 @@ namespace Networking
         [SerializeField]
         private TMP_Text _joinCode;
 
+        private UnityRelayManager _relayManager;
+
         private void Awake()
         {
+            _relayManager = UnityRelayManager.Instance;
+
             _joinButton.onClick.AddListener(HandleJoinButtonClick);
             _hostButton.onClick.AddListener(HandleHostButtonClick);
             _disconnectButton.onClick.AddListener(HandleDisconnectButtonClick);
