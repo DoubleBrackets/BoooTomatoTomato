@@ -43,6 +43,11 @@ public class BullyController : NetworkBehaviour
 
     public override void OnStartClient()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
+
         Debug.Log("OnStartClient BullyController");
         foreach (SelectWeaponButton button in _weaponButtons)
         {
@@ -70,7 +75,7 @@ public class BullyController : NetworkBehaviour
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)
     {
-        if (!IsOwnerUpdated())
+        if (!IsOwner)
         {
             return;
         }
@@ -87,7 +92,7 @@ public class BullyController : NetworkBehaviour
 
     private void HandleWeaponSelected(string throwableName)
     {
-        if (!IsOwnerUpdated())
+        if (!IsOwner)
         {
             return;
         }
@@ -106,7 +111,7 @@ public class BullyController : NetworkBehaviour
     [Client]
     public void EnterGameplay()
     {
-        if (IsOwnerUpdated())
+        if (IsOwner)
         {
             _weaponSelectionCanvas.SetActive(true);
         }
@@ -115,21 +120,16 @@ public class BullyController : NetworkBehaviour
     [Client]
     public void ExitGameplay()
     {
-        if (IsOwnerUpdated())
+        if (IsOwner)
         {
             _weaponSelectionCanvas.SetActive(false);
         }
     }
 
-    private bool IsOwnerUpdated()
-    {
-        return IsOwner || (OwnerId == -1 && IsServerInitialized);
-    }
-
     public void OnAttack(CallbackContext ctx)
     {
         Debug.Log("TRY ATTACK!");
-        if (!IsOwnerUpdated())
+        if (!IsOwner)
         {
             Debug.Log("Not owner!");
             return;
@@ -152,7 +152,7 @@ public class BullyController : NetworkBehaviour
         SpawnThrowable(direction);
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     private void SpawnThrowable(Vector3 direction)
     {
         Debug.Log("SpawnThrowable Server");

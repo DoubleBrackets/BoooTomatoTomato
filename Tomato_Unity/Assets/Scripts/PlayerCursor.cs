@@ -16,7 +16,7 @@ public class PlayerCursor : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwnerUpdated())
+        if (!IsOwner)
         {
             return;
         }
@@ -29,11 +29,6 @@ public class PlayerCursor : NetworkBehaviour
     private void GameplayManager_HandleGameStarted()
     {
         Despawn();
-    }
-
-    private bool IsOwnerUpdated()
-    {
-        return IsOwner || (OwnerId == -1 && IsServerInitialized);
     }
 
     public override void OnStopClient()
