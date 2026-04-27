@@ -107,7 +107,6 @@ namespace Gameplay.GameplaySystems
             Debug.Log($"ChangeGameplayState: {_currentGameplayState} -> {newState}");
             ExitGameplayState(_currentGameplayState);
             EnterNewGameplayState(newState);
-            Debug.Log("INVOKED");
             OnGameplayStateChanged?.Invoke(newState);
         }
 

@@ -4,7 +4,6 @@ using FishNet.Connection;
 using FishNet.Object;
 using Gameplay.TomaGirl;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Gameplay.Throwables
 {
@@ -24,6 +23,8 @@ namespace Gameplay.Throwables
 
         private bool _alreadyImpacted;
 
+        private Vector3 _direction;
+
         public ThrowableObjectInfo GetInfo()
         {
             return _info;
@@ -42,13 +43,9 @@ namespace Gameplay.Throwables
         public override void OnSpawnServer(NetworkConnection connection)
         {
             var rb = GetComponent<Rigidbody>();
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Vector3 withDepth = new(mousePos.x, mousePos.y, _aimDepth);
-            Vector3 cursorPos = Camera.main.ScreenToWorldPoint(withDepth);
-            Vector3 currentPos = transform.position;
-            Vector3 direction = cursorPos - currentPos;
+
             rb.isKinematic = false;
-            rb.linearVelocity = _startVelocity.magnitude * direction.normalized;
+            rb.linearVelocity = _startVelocity.magnitude * _direction.normalized;
 
             StartDespawnTimer(destroyCancellationToken).Forget();
         }
@@ -196,5 +193,9 @@ namespace Gameplay.Throwables
             rb.linearVelocity = _startVelocity;
         }
         */
+        public void SetDirection(Vector3 direction)
+        {
+            _direction = direction;
+        }
     }
 }

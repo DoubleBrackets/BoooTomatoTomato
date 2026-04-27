@@ -23,9 +23,6 @@ namespace Gameplay.TomaGirl
         private List<TomaGirlHitbox> _hitboxes = new();
 
         [SerializeField]
-        private Rigidbody _rb;
-
-        [SerializeField]
         private float _acceleration;
 
         [SerializeField]
@@ -71,7 +68,6 @@ namespace Gameplay.TomaGirl
         public void EnterWaitToBegin()
         {
             _canMove = false;
-            _rb.transform.position = _initialSpawnPos.position;
         }
 
         [Server]

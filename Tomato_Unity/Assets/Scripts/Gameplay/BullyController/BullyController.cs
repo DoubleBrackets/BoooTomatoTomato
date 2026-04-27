@@ -5,6 +5,7 @@ using Gameplay.BullyController;
 using Gameplay.GameplaySystems;
 using Gameplay.Throwables;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class BullyController : NetworkBehaviour
@@ -39,7 +40,6 @@ public class BullyController : NetworkBehaviour
                 button.OnWeaponSelected += HandleWeaponSelected;
             }
 
-            Debug.Log("LISTENING");
             GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
             HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
         }
@@ -47,7 +47,6 @@ public class BullyController : NetworkBehaviour
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)
     {
-        Debug.Log("ASDF");
         if (state != GameplayManager.GameplayState.Gameplay)
         {
             ExitGameplay();
@@ -102,12 +101,18 @@ public class BullyController : NetworkBehaviour
         }
 
         Debug.Log("throw");
-        SpawnThrowable();
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Vector3 withDepth = new(mousePos.x, mousePos.y, 1);
+        Vector3 cursorPos = Camera.main.ScreenToWorldPoint(withDepth);
+        Vector3 direction = cursorPos - _startPos;
+
+        SpawnThrowable(direction);
     }
 
     [ServerRpc]
-    private void SpawnThrowable()
+    private void SpawnThrowable(Vector3 direction)
     {
+        Debug.Log("SpawnThrowable Server");
         if (GameplayManager.Instance.CurrentGameplayState != GameplayManager.GameplayState.Gameplay)
         {
             return;
@@ -116,11 +121,11 @@ public class BullyController : NetworkBehaviour
         if (_selectedThrowable == null)
         {
             _selectedThrowable = _throwableInfos[0].Throwable;
-            return;
         }
 
         Debug.Log("spawn tomato");
         BasicThrowable obj = Instantiate(_selectedThrowable, _startPos, Quaternion.identity);
+        obj.SetDirection(direction);
         Spawn(obj);
     }
 
