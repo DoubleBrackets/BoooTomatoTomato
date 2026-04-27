@@ -41,6 +41,7 @@ public class BullyController : NetworkBehaviour
 
             Debug.Log("LISTENING");
             GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
+            HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
         }
     }
 
