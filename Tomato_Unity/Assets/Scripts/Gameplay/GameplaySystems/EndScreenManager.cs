@@ -35,6 +35,8 @@ namespace Gameplay.GameplaySystems
             {
                 _restartButton.onClick.AddListener(HandleRestartButtonClick);
             }
+
+            _restartButton.gameObject.SetActive(IsServerInitialized);
         }
 
         public void Exit()

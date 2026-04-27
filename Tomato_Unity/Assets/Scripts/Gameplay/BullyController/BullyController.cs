@@ -127,6 +127,7 @@ public class BullyController : NetworkBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector3 withDepth = new(mousePos.x, mousePos.y, _aimDepth);
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(withDepth);
+        Debug.Log("Cursor pos: " + cursorPos);
         Vector3 direction = cursorPos - _startPos;
 
         direction.y *= _vertAimMult;
