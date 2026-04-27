@@ -61,7 +61,7 @@ public class BullyController : NetworkBehaviour
         RpcSetStartPosition(startPos);
     }
 
-    [ObserversRpc(RunLocally = true)]
+    [ObserversRpc(RunLocally = true, BufferLast = true)]
     private void RpcSetStartPosition(Vector3 startPos)
     {
         _startPos = startPos;
@@ -123,7 +123,6 @@ public class BullyController : NetworkBehaviour
 
     private bool IsOwnerUpdated()
     {
-        Debug.Log($"OwnerId: {OwnerId}");
         return IsOwner || (OwnerId == -1 && IsServerInitialized);
     }
 
