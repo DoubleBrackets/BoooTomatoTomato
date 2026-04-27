@@ -68,7 +68,7 @@ namespace Gameplay.TomaGirl
         public void EnterWaitToBegin()
         {
             _canMove = false;
-            _currentAnimName.Value = "Idle";
+            _currentAnimName.Value = "Tomagirl_Idle";
             RpcPlayAnim(_currentAnimName.Value);
         }
 

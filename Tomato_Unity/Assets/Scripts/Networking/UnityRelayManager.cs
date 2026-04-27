@@ -325,6 +325,9 @@ namespace Networking
             }
         }
 
+        /// <summary>
+        ///     Delay to prevent weird race condition with playerspawner
+        /// </summary>
         private async UniTaskVoid InitializeClientDelayed()
         {
             await UniTask.WaitForSeconds(0.5f);
