@@ -55,6 +55,8 @@ namespace Gameplay.GameplaySystems
         [Client]
         private async UniTaskVoid ShowJoke(string joke, string punchline)
         {
+            _jokeText.text = "";
+            _jokePunchlineText.text = "";
             await UniTask.WaitForSeconds(_initialDelay);
             _jokeText.text = joke;
             await UniTask.WaitForSeconds(_delayBetweenParts);

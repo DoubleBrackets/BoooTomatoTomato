@@ -71,7 +71,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584243590080073972
+  _initializedTimestamp: -8584243589035910633
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -121,7 +121,7 @@ MonoBehaviour:
   _endScreenManager: {fileID: 6398720556484738528}
   _jokeTellManager: {fileID: 6725387540391291160}
   _roundTimerText: {fileID: 0}
-  _roundDuration: 15
+  _roundDuration: 40
   OnGameplayStateChanged:
     m_PersistentCalls:
       m_Calls: []

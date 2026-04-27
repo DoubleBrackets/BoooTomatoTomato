@@ -2318,6 +2318,10 @@ PrefabInstance:
       value: GameplayManagers
       objectReference: {fileID: 0}
     - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
+      propertyPath: _roundDuration
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491094059173752192, guid: b595b50696e6e17429ea7d87c9125110, type: 3}
       propertyPath: _roundTimerText
       value: 
       objectReference: {fileID: 1210792388}
