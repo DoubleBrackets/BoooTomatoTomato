@@ -22,7 +22,20 @@ namespace Gameplay.GameplaySystems
             EndScreen
         }
 
-        public static GameplayManager Instance { get; private set; }
+        public static GameplayManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindAnyObjectByType<GameplayManager>(FindObjectsInactive.Include);
+                }
+
+                return _instance;
+            }
+        }
+
+        private static GameplayManager _instance;
 
         [Header("Depends")]
 
@@ -64,7 +77,12 @@ namespace Gameplay.GameplaySystems
         public override void OnStartNetwork()
         {
             Debug.Log("Set GameplayManager Instance");
-            Instance = this;
+            _instance = this;
+        }
+
+        public override void OnStopNetwork()
+        {
+            _instance = null;
         }
 
         public override void OnStartServer()
@@ -89,6 +107,7 @@ namespace Gameplay.GameplaySystems
             Debug.Log($"ChangeGameplayState: {_currentGameplayState} -> {newState}");
             ExitGameplayState(_currentGameplayState);
             EnterNewGameplayState(newState);
+            Debug.Log("INVOKED");
             OnGameplayStateChanged?.Invoke(newState);
         }
 

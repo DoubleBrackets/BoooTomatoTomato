@@ -39,6 +39,7 @@ public class BullyController : NetworkBehaviour
                 button.OnWeaponSelected += HandleWeaponSelected;
             }
 
+            Debug.Log("LISTENING");
             GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
         }
     }
