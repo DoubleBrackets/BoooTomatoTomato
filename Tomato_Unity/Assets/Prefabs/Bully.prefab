@@ -249,7 +249,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584243677734066645
+  _initializedTimestamp: -8584243560314278223
   _localLevelOfDetailCalculationType: 0
   _useLevelOfDetail: 0
   _useRootLevelOfDetail: 1
@@ -304,13 +304,16 @@ MonoBehaviour:
   - Throwable: {fileID: 8989385795929904449, guid: dc13fff6c0ff83043bc6e97626798927, type: 3}
     Name: tomato
   _weaponSelectionCanvas: {fileID: 3668665674930555267}
-  _startPos: {x: -0, y: -0, z: -5}
+  _startPos: {x: 1, y: 0, z: -5}
+  _aimDepth: 5
+  _vertAimMult: 3
   _weaponButtons:
   - {fileID: 6169748559996937365}
   - {fileID: 923078017804828350}
   - {fileID: 1219048965782192336}
   - {fileID: 1594430107219890767}
   - {fileID: 6878093505216591200}
+  _startHorizontalRange: {x: -1, y: 1}
 --- !u!114 &4206144396038377668
 MonoBehaviour:
   m_ObjectHideFlags: 0

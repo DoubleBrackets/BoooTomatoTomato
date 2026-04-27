@@ -7,6 +7,7 @@ using Gameplay.Throwables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using Random = UnityEngine.Random;
 
 public class BullyController : NetworkBehaviour
 {
@@ -27,7 +28,16 @@ public class BullyController : NetworkBehaviour
     private Vector3 _startPos = Vector3.forward * -5;
 
     [SerializeField]
+    private float _aimDepth;
+
+    [SerializeField]
+    private float _vertAimMult;
+
+    [SerializeField]
     private List<SelectWeaponButton> _weaponButtons;
+
+    [SerializeField]
+    private Vector2 _startHorizontalRange;
 
     private BasicThrowable _selectedThrowable;
 
@@ -43,6 +53,11 @@ public class BullyController : NetworkBehaviour
             GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
             HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
         }
+    }
+
+    public override void OnStartServer()
+    {
+        _startPos.x = Random.Range(_startHorizontalRange.x, _startHorizontalRange.y);
     }
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)
@@ -102,10 +117,12 @@ public class BullyController : NetworkBehaviour
 
         Debug.Log("throw");
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector3 withDepth = new(mousePos.x, mousePos.y, 1);
+        Vector3 withDepth = new(mousePos.x, mousePos.y, _aimDepth);
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(withDepth);
         Vector3 direction = cursorPos - _startPos;
 
+        direction.y *= _vertAimMult;
+        direction.Normalize();
         SpawnThrowable(direction);
     }
 
