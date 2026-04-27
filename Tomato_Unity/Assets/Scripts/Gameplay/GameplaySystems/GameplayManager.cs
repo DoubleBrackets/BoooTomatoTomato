@@ -147,8 +147,9 @@ namespace Gameplay.GameplaySystems
                     if (IsServerInitialized)
                     {
                         _endScreenManager.OnRestartGameplay += HandleRestartGameplay;
-                        _endScreenManager.ShowEndScreen(_scoringSystem.HappyImpactCount >=
-                                                        _scoringSystem.SadImpactCount);
+                        _endScreenManager.ShowEndScreen(true,
+                            _scoringSystem.HappyImpactCount >=
+                            _scoringSystem.SadImpactCount);
                     }
 
                     break;
@@ -187,6 +188,8 @@ namespace Gameplay.GameplaySystems
                     if (IsServerInitialized)
                     {
                         _endScreenManager.OnRestartGameplay -= HandleRestartGameplay;
+                        _endScreenManager.ShowEndScreen(false,
+                            false);
                     }
 
                     break;

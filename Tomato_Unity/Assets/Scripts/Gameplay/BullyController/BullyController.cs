@@ -43,20 +43,19 @@ public class BullyController : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        if (IsOwner)
+        Debug.Log("OnStartClient BullyController");
+        foreach (SelectWeaponButton button in _weaponButtons)
         {
-            foreach (SelectWeaponButton button in _weaponButtons)
-            {
-                button.OnWeaponSelected += HandleWeaponSelected;
-            }
-
-            GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
-            HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
+            button.OnWeaponSelected += HandleWeaponSelected;
         }
+
+        GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
+        HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
     }
 
     public override void OnStartServer()
     {
+        Debug.Log("OnStartServer BullyController");
         var startPos = new Vector3(Random.Range(_startHorizontalRange.x, _startHorizontalRange.y), _startPos.y,
             _startPos.z);
         RpcSetStartPosition(startPos);
@@ -66,10 +65,16 @@ public class BullyController : NetworkBehaviour
     private void RpcSetStartPosition(Vector3 startPos)
     {
         _startPos = startPos;
+        Debug.Log("RpcSetStartPosition BullyController");
     }
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)
     {
+        if (!IsOwnerUpdated())
+        {
+            return;
+        }
+
         if (state != GameplayManager.GameplayState.Gameplay)
         {
             ExitGameplay();
@@ -82,6 +87,11 @@ public class BullyController : NetworkBehaviour
 
     private void HandleWeaponSelected(string throwableName)
     {
+        if (!IsOwnerUpdated())
+        {
+            return;
+        }
+
         Debug.Log($"Selected throwable in client: {throwableName}");
         SetThrowable(throwableName);
     }
@@ -96,7 +106,7 @@ public class BullyController : NetworkBehaviour
     [Client]
     public void EnterGameplay()
     {
-        if (IsOwner)
+        if (IsOwnerUpdated())
         {
             _weaponSelectionCanvas.SetActive(true);
         }
@@ -105,16 +115,24 @@ public class BullyController : NetworkBehaviour
     [Client]
     public void ExitGameplay()
     {
-        if (IsOwner)
+        if (IsOwnerUpdated())
         {
             _weaponSelectionCanvas.SetActive(false);
         }
     }
 
+    private bool IsOwnerUpdated()
+    {
+        Debug.Log($"OwnerId: {OwnerId}");
+        return IsOwner || (OwnerId == -1 && IsServerInitialized);
+    }
+
     public void OnAttack(CallbackContext ctx)
     {
-        if (!IsOwner)
+        Debug.Log("TRY ATTACK!");
+        if (!IsOwnerUpdated())
         {
+            Debug.Log("Not owner!");
             return;
         }
 

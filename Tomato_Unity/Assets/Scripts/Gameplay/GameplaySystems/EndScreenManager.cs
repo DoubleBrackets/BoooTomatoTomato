@@ -45,8 +45,6 @@ namespace Gameplay.GameplaySystems
             {
                 _restartButton.onClick.RemoveListener(HandleRestartButtonClick);
             }
-
-            SetVisibility(false);
         }
 
         private void HandleRestartButtonClick()
@@ -61,15 +59,15 @@ namespace Gameplay.GameplaySystems
         }
 
         [Server]
-        public void ShowEndScreen(bool win)
+        public void ShowEndScreen(bool visible, bool win)
         {
-            RpcShowEndScreen(win);
+            RpcShowEndScreen(visible, win);
         }
 
         [ObserversRpc(RunLocally = true, BufferLast = true)]
-        private void RpcShowEndScreen(bool win)
+        private void RpcShowEndScreen(bool visible, bool win)
         {
-            SetVisibility(true);
+            SetVisibility(visible);
             _animator.Play(win ? "Win" : "Lose");
         }
     }

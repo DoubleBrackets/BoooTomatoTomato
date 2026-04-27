@@ -2426,7 +2426,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1739749606}
   - component: {fileID: 1739749607}
-  - component: {fileID: 1739749608}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2465,19 +2464,6 @@ MonoBehaviour:
   _joinButton: {fileID: 1519819106}
   _hostButton: {fileID: 337719459}
   _regionDropdown: {fileID: 457067422}
---- !u!114 &1739749608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739749604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea84196be1a246d68342d28bfbd5fefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenu.MainMenuSceneLoader
-  _gameplayScene: Assets/Scenes/FinalGameplayScene.unity
 --- !u!1 &1776409731
 GameObject:
   m_ObjectHideFlags: 0
