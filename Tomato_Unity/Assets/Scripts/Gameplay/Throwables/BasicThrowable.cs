@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using FishNet.Connection;
 using FishNet.Object;
 using Gameplay.TomaGirl;
@@ -47,6 +49,20 @@ namespace Gameplay.Throwables
             Vector3 direction = cursorPos - currentPos;
             rb.isKinematic = false;
             rb.linearVelocity = _startVelocity.magnitude * direction.normalized;
+
+            StartDespawnTimer(destroyCancellationToken).Forget();
+        }
+
+        private async UniTaskVoid StartDespawnTimer(CancellationToken token)
+        {
+            await UniTask.WaitForSeconds(3f);
+
+            if (token.IsCancellationRequested)
+            {
+                return;
+            }
+
+            Despawn(gameObject);
         }
 
         /// <summary>

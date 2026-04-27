@@ -45,6 +45,7 @@ public class BullyController : NetworkBehaviour
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)
     {
+        Debug.Log("ASDF");
         if (state != GameplayManager.GameplayState.Gameplay)
         {
             ExitGameplay();

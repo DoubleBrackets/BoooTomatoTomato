@@ -151,7 +151,7 @@ MonoBehaviour:
   - SpriteName: momonga
     Sprite: {fileID: -2110421635, guid: b8f03de0f8a33a64c928895e6450728b, type: 3}
   _fadeTweenSettings:
-    duration: 2
+    duration: 0.8
     ease: -1
     customEase:
       serializedVersion: 2

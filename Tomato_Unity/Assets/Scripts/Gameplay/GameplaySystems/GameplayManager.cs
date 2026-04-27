@@ -40,10 +40,10 @@ namespace Gameplay.GameplaySystems
 
         [SerializeField]
         private EndScreenManager _endScreenManager;
-        
+
         [SerializeField]
         private JokeTellManager _jokeTellManager;
-        
+
         [Header("UI")]
 
         [SerializeField]
@@ -61,9 +61,14 @@ namespace Gameplay.GameplaySystems
 
         public UnityEvent<GameplayState> OnGameplayStateChanged;
 
+        public override void OnStartNetwork()
+        {
+            Debug.Log("Set GameplayManager Instance");
+            Instance = this;
+        }
+
         public override void OnStartServer()
         {
-            Instance = this;
             // Enter waiting to begin
             ChangeGameplayState(GameplayState.WaitingToBegin);
         }
@@ -97,6 +102,7 @@ namespace Gameplay.GameplaySystems
                     break;
                 case GameplayState.WaitingToBegin:
                     _waitingToBeginManager.Enter();
+                    _roundTimerText.gameObject.SetActive(false);
                     if (IsServerInitialized)
                     {
                         _tomaGirlController.EnterWaitToBegin();
