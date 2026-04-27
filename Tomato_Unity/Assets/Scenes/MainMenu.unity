@@ -325,8 +325,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter join code...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-  m_sharedMaterial: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -462,8 +462,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-  m_sharedMaterial: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -750,6 +750,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Host
       objectReference: {fileID: 0}
+    - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1602,8 +1610,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
-  m_sharedMaterial: {fileID: 3178260316532975691, guid: c7d92a665a24abf4fb5d9f3c7f2a67cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2107,6 +2115,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
   m_ShowMaskGraphic: 0
+--- !u!1 &1382211417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382211418}
+  - component: {fileID: 1382211419}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382211418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382211417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.51052, y: 0, z: 2.35689}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382211419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382211417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c547e0b03e6f54e8f5c62d92be2fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  musicMixerGroup: {fileID: -438006025805622985, guid: 674ab54d4b1c1a54c923b3f0975da9e1, type: 2}
+  sfxMixerGroup: {fileID: -3886383391593332232, guid: 674ab54d4b1c1a54c923b3f0975da9e1, type: 2}
+  musicTracks:
+  - clip: {fileID: 8300000, guid: 595b3cec513fd1d4fa474bfe0a5652b1, type: 3}
+    audioSource: {fileID: 0}
+    title: helpme
+    volume: 0.7
+    pitchLower: 1
+    pitchUpper: 1
+    loop: 1
+  sfxClips:
+  - clip: {fileID: 8300000, guid: 740e5a577e2d0eb45a597667dd037692, type: 3}
+    audioSource: {fileID: 0}
+    title: badumtss
+    volume: 0.6
+    pitchLower: 0.9
+    pitchUpper: 1.1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 38ffde6295a958748a7215af14a962fe, type: 3}
+    audioSource: {fileID: 0}
+    title: splat
+    volume: 0.5
+    pitchLower: 0.8
+    pitchUpper: 1.2
+    loop: 0
 --- !u!224 &1519819105 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6260271519001089253, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
@@ -2932,6 +3009,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6333023194856511403, guid: f0e237c1e09949d4da3da06907b27296, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
@@ -2953,3 +3038,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 222879755}
+  - {fileID: 1382211418}
