@@ -68,6 +68,8 @@ namespace Gameplay.TomaGirl
         public void EnterWaitToBegin()
         {
             _canMove = false;
+            _currentAnimName.Value = "Idle";
+            RpcPlayAnim(_currentAnimName.Value);
         }
 
         [Server]

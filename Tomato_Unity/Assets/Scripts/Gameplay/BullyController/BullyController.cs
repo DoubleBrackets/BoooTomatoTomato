@@ -57,7 +57,15 @@ public class BullyController : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        _startPos.x = Random.Range(_startHorizontalRange.x, _startHorizontalRange.y);
+        var startPos = new Vector3(Random.Range(_startHorizontalRange.x, _startHorizontalRange.y), _startPos.y,
+            _startPos.z);
+        RpcSetStartPosition(startPos);
+    }
+
+    [ObserversRpc(RunLocally = true)]
+    private void RpcSetStartPosition(Vector3 startPos)
+    {
+        _startPos = startPos;
     }
 
     private void HandleGameplayStateChanged(GameplayManager.GameplayState state)

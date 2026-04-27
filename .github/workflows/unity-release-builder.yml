@@ -2,7 +2,6 @@ name: Unity-Release-Builder
 
 concurrency:
   group: ci-${{ github.actor }}-${{ github.ref }}-release-runner
-  cancel-in-progress: true
 
 env:
   PROJ_DIR: Tomato_Unity
