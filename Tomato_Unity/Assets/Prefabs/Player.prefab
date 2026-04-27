@@ -538,10 +538,6 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2698549899249541658, guid: 88debf31bbdb87a4e9a584270b4f45e8, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584243677734066645
-      objectReference: {fileID: 0}
     - target: {fileID: 3825484155848167998, guid: 88debf31bbdb87a4e9a584270b4f45e8, type: 3}
       propertyPath: m_Name
       value: Bully

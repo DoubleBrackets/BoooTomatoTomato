@@ -344,7 +344,7 @@ namespace Networking
         private void ConfigureTransportType(out string connectionType)
         {
             var isWebGL = false;
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL
             isWebGL = true;
 #endif
             if (isWebGL)

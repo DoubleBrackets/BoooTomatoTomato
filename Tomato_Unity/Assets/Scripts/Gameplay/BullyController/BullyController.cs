@@ -39,10 +39,14 @@ public class BullyController : NetworkBehaviour
     [SerializeField]
     private Vector2 _startHorizontalRange;
 
+    [SerializeField]
+    private InputAction _attackAction;
+
     private BasicThrowable _selectedThrowable;
 
     public override void OnStartClient()
     {
+        gameObject.name = $"BullyController_{OwnerId}";
         if (!IsOwner)
         {
             return;
@@ -56,6 +60,9 @@ public class BullyController : NetworkBehaviour
 
         GameplayManager.Instance.OnGameplayStateChanged.AddListener(HandleGameplayStateChanged);
         HandleGameplayStateChanged(GameplayManager.Instance.CurrentGameplayState);
+
+        _attackAction.Enable();
+        _attackAction.performed += OnAttack;
     }
 
     public override void OnStartServer()
@@ -128,15 +135,15 @@ public class BullyController : NetworkBehaviour
 
     public void OnAttack(CallbackContext ctx)
     {
-        Debug.Log("TRY ATTACK!");
-        if (!IsOwner)
+        if (!ctx.performed)
         {
-            Debug.Log("Not owner!");
             return;
         }
 
-        if (!ctx.performed)
+        Debug.Log($"TRY ATTACK! {OwnerId}");
+        if (!IsOwner)
         {
+            Debug.Log("Not owner!");
             return;
         }
 
