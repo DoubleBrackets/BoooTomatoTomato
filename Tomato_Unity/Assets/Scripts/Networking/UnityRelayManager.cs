@@ -321,8 +321,14 @@ namespace Networking
             bool startServer = InstanceFinder.ServerManager.StartConnection();
             if (startServer)
             {
-                InstanceFinder.ClientManager.StartConnection();
+                InitializeClientDelayed().Forget();
             }
+        }
+
+        private async UniTaskVoid InitializeClientDelayed()
+        {
+            await UniTask.WaitForSeconds(0.5f);
+            InstanceFinder.ClientManager.StartConnection();
         }
 
         private void InitializeClient(JoinAllocation joinAllocation)
