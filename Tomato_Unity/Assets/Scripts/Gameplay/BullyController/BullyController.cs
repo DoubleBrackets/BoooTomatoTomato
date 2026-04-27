@@ -153,7 +153,7 @@ public class BullyController : NetworkBehaviour
         SpawnThrowable(direction);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void SpawnThrowable(Vector3 direction)
     {
         Debug.Log("SpawnThrowable Server");
