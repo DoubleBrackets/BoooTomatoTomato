@@ -66,8 +66,8 @@ namespace Gameplay.GameplaySystems
         [Server]
         private void UpdateBalanceValue()
         {
-            float ratio = (float)_happyImpactCountValue.Value /
-                          (_happyImpactCountValue.Value + _sadImpactCountValue.Value);
+            int total = _happyImpactCountValue.Value + _sadImpactCountValue.Value;
+            float ratio = total > 0 ? (float)_happyImpactCountValue.Value / total : 0.5f;
             _currentBalanceValue.Value = ratio;
         }
 
