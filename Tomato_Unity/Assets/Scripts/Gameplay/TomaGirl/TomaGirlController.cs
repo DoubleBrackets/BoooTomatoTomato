@@ -75,6 +75,8 @@ namespace Gameplay.TomaGirl
         [Server]
         public void EnterGameplay()
         {
+            _currentAnimName.Value = "Tomagirl_Start";
+            RpcPlayAnim(_currentAnimName.Value);
             _canMove = true;
         }
 

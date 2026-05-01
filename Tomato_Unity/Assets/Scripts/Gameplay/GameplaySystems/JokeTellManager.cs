@@ -18,6 +18,12 @@ namespace Gameplay.GameplaySystems
 
             [TextArea]
             public string Punchline;
+
+            public Joke(string jokeStart, string punchline)
+            {
+                JokeStart = jokeStart;
+                Punchline = punchline;
+            }
         }
 
         [SerializeField]
@@ -37,6 +43,12 @@ namespace Gameplay.GameplaySystems
 
         [SerializeField]
         private float _lingerTime;
+
+        [SerializeField]
+        private TMP_InputField _jokeInput;
+
+        [SerializeField]
+        private TMP_InputField _punchlineInput;
 
         private void Awake()
         {
@@ -69,12 +81,16 @@ namespace Gameplay.GameplaySystems
         [Server]
         public void PlayJoke()
         {
+            Debug.Log($"{_jokeInput.text} ... {_punchlineInput.text}");
             if (_jokes.Count == 0)
             {
                 return;
             }
 
             Joke joke = _jokes[new Random().Next(_jokes.Count)];
+
+            if (_jokeInput.text != "" && _punchlineInput.text != "") joke = new Joke(_jokeInput.text, _punchlineInput.text);
+
             TellJoke(joke.JokeStart, joke.Punchline);
         }
     }

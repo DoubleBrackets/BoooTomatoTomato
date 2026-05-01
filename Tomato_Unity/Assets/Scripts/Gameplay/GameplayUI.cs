@@ -40,7 +40,7 @@ namespace Gameplay
 
             if (!InstanceFinder.IsServerStarted)
             {
-                Destroy(_startButton.gameObject);
+                Destroy(_startButton.transform.parent.gameObject);
                 return;
             }
 

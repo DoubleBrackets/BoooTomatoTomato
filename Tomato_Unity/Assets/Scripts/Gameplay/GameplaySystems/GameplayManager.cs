@@ -19,7 +19,7 @@ namespace Gameplay.GameplaySystems
             BeforeInitialize,
             WaitingToBegin,
             Gameplay,
-            EndScreen
+            EndScreen,
         }
 
         public static GameplayManager Instance

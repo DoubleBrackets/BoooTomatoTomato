@@ -1,5 +1,6 @@
 using System;
 using FishNet.Object;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -32,7 +33,7 @@ namespace Gameplay.GameplaySystems
             if (IsServerInitialized)
             {
                 _beginGameplayButton.onClick.AddListener(HandleBeginButtonClick);
-                _beginGameplayButton.gameObject.SetActive(true);
+                _beginGameplayButton.transform.parent.gameObject.SetActive(true);
             }
         }
 
@@ -41,7 +42,7 @@ namespace Gameplay.GameplaySystems
             if (IsServerInitialized)
             {
                 _beginGameplayButton.onClick.RemoveListener(HandleBeginButtonClick);
-                _beginGameplayButton.gameObject.SetActive(false);
+                _beginGameplayButton.transform.parent.gameObject.SetActive(false);
             }
         }
 
